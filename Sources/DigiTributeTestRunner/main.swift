@@ -5,7 +5,7 @@ import DigiTributeCore
 struct TestRunner {
     static func main() async {
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-        print("  ⚕ Digi-Tribute Core Test Suite")
+        print("  ⚕ Digital Tribute 2.0 Core Test Suite")
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 
         var passed = 0
@@ -21,22 +21,22 @@ struct TestRunner {
             }
         }
 
-        // Test 1: All 13 relationship types have prompts
+        // Test 1: All expanded relationship types (20+) have prompts mapped to 4 impact pillars
         let service = QuestionBankService()
         for relationship in RelationshipType.allCases {
             let prompts = await service.getPrompts(for: relationship, count: 5)
             assertTest(
                 prompts.count >= 4 && prompts.count <= 6 && !prompts.isEmpty,
-                "Prompts for relationship: \(relationship.displayName) (\(prompts.count) prompts)"
+                "Prompts for [\(relationship.category.rawValue)]: \(relationship.displayName) (\(prompts.count) prompts)"
             )
         }
 
         // Test 2: Randomization count clamping
-        let fatherPrompts = await service.getPrompts(for: .father, count: 4)
-        assertTest(fatherPrompts.count == 4, "Prompt count clamping (requested 4 -> got \(fatherPrompts.count))")
+        let childhoodPrompts = await service.getPrompts(for: .childhoodFriend, count: 4)
+        assertTest(childhoodPrompts.count == 4, "Prompt count clamping (requested 4 -> got \(childhoodPrompts.count))")
 
-        let motherPrompts = await service.getPrompts(for: .mother, count: 6)
-        assertTest(motherPrompts.count == 6, "Prompt count clamping (requested 6 -> got \(motherPrompts.count))")
+        let colleaguePrompts = await service.getPrompts(for: .workColleagueFriend, count: 6)
+        assertTest(colleaguePrompts.count == 6, "Prompt count clamping (requested 6 -> got \(colleaguePrompts.count))")
 
         // Test 3: Subject Model Serialization
         do {
@@ -76,9 +76,9 @@ struct TestRunner {
                 topicId: UUID(),
                 contributorName: "Sarah Jenkins",
                 contributorEmail: "sarah@example.com",
-                relationshipType: "daughter",
-                mediaType: .video,
-                rawMediaUrl: "https://supabase.co/storage/v1/object/raw/123/video.mp4",
+                relationshipType: "childhood_friend",
+                mediaType: .voiceOnly,
+                rawMediaUrl: "https://supabase.co/storage/v1/object/raw/123/audio.m4a",
                 finalMediaUrl: nil,
                 status: .submitted,
                 rejectionReason: nil,
@@ -94,7 +94,7 @@ struct TestRunner {
             decoder.dateDecodingStrategy = .iso8601
             let decoded = try decoder.decode(Tribute.self, from: data)
 
-            assertTest(decoded.id == tribute.id && decoded.contributorName == "Sarah Jenkins" && decoded.mediaType == .video, "Tribute serialization")
+            assertTest(decoded.id == tribute.id && decoded.contributorName == "Sarah Jenkins" && decoded.mediaType == .voiceOnly, "Tribute Voice-Only serialization")
         } catch {
             assertTest(false, "Tribute serialization error: \(error)")
         }
@@ -106,17 +106,17 @@ struct TestRunner {
             funeralHomeId: UUID(),
             firstName: "Arthur",
             lastName: "Pendelton",
-            bioText: "Beloved father and craftsman.",
+            bioText: "Beloved father, craftsman, and childhood friend.",
             status: .active
         )
-        let sampleTopic = Topic(id: UUID(), relationshipType: "son", questionText: "What's a memory that captures his personality?")
+        let sampleTopic = Topic(id: UUID(), relationshipType: "childhood_friend", questionText: "What was an adventure only the two of you knew about?")
         let approvedTribute = Tribute(
             id: UUID(),
             subjectId: subject.id,
             topicId: sampleTopic.id,
             contributorName: "David Pendelton",
-            relationshipType: "son",
-            mediaType: .photo,
+            relationshipType: "childhood_friend",
+            mediaType: .voiceOnly,
             status: .approved
         )
         let sections = docService.organizeTributesForPresentation(tributes: [approvedTribute], topics: [sampleTopic])

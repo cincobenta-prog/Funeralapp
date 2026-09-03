@@ -2,7 +2,7 @@
 //  App.swift
 //  DigiTributeApp
 //
-//  Native Application Entry Point for Digi-Tribute 2.0 (macOS & iOS).
+//  Native Application Entry Point for Digital Tribute (macOS & iOS).
 //
 
 import SwiftUI
@@ -16,7 +16,7 @@ struct DigiTributeApp: App {
         WindowGroup {
             MainContentView()
                 .environmentObject(appState)
-                .frame(minWidth: 900, minHeight: 650)
+                .frame(minWidth: 920, minHeight: 680)
         }
     }
 }
@@ -47,10 +47,31 @@ final class AppState: ObservableObject {
         )
         self.currentSubject = subject
 
-        let topic1 = Topic(id: UUID(), relationshipType: "spouse_partner", questionText: "What's something they did every day that you didn't appreciate enough until now?")
-        let topic2 = Topic(id: UUID(), relationshipType: "daughter", questionText: "What's a moment she made you proud in a way that surprised you?")
-        let topic3 = Topic(id: UUID(), relationshipType: "friend", questionText: "What did she teach you about being a friend?")
-        self.sampleTopics = [topic1, topic2, topic3]
+        let topic1 = Topic(
+            id: UUID(),
+            relationshipType: "spouse_partner",
+            questionText: "What's something they did every day that was a quiet act of devotion?",
+            pillar: .helpSacrifice
+        )
+        let topic2 = Topic(
+            id: UUID(),
+            relationshipType: "daughter",
+            questionText: "What's a moment she made you proud in a way that took your breath away?",
+            pillar: .joy
+        )
+        let topic3 = Topic(
+            id: UUID(),
+            relationshipType: "childhood_friend",
+            questionText: "What was an unforgettable adventure from growing up that only the two of you knew about?",
+            pillar: .joy
+        )
+        let topic4 = Topic(
+            id: UUID(),
+            relationshipType: "mentee_student",
+            questionText: "What was a specific moment they believed in your potential before you could see it yourself?",
+            pillar: .helpSacrifice
+        )
+        self.sampleTopics = [topic1, topic2, topic3, topic4]
 
         let tribute1 = Tribute(
             id: UUID(),
@@ -58,16 +79,16 @@ final class AppState: ObservableObject {
             topicId: topic1.id,
             contributorName: "Robert Vance",
             relationshipType: "spouse_partner",
-            mediaType: .audio,
+            mediaType: .voiceOnly,
             status: .approved
         )
         let tribute2 = Tribute(
             id: UUID(),
             subjectId: subjectId,
             topicId: topic2.id,
-            contributorName: "Claire Vance",
+            contributorName: "Claire Vance-Miller",
             relationshipType: "daughter",
-            mediaType: .photo,
+            mediaType: .videoAndAudio,
             status: .approved
         )
         let tribute3 = Tribute(
@@ -75,11 +96,20 @@ final class AppState: ObservableObject {
             subjectId: subjectId,
             topicId: topic3.id,
             contributorName: "Martha Hayes",
-            relationshipType: "friend",
-            mediaType: .video,
+            relationshipType: "childhood_friend",
+            mediaType: .voiceOnly,
             status: .approved
         )
-        self.sampleTributes = [tribute1, tribute2, tribute3]
+        let tribute4 = Tribute(
+            id: UUID(),
+            subjectId: subjectId,
+            topicId: topic4.id,
+            contributorName: "Sarah Jenkins",
+            relationshipType: "mentee_student",
+            mediaType: .voiceOnly,
+            status: .approved
+        )
+        self.sampleTributes = [tribute1, tribute2, tribute3, tribute4]
 
         let docService = MemorialDocumentService()
         self.documentSections = docService.organizeTributesForPresentation(tributes: self.sampleTributes, topics: self.sampleTopics)
@@ -87,8 +117,8 @@ final class AppState: ObservableObject {
 }
 
 enum NavTab: String, CaseIterable, Identifiable {
-    case guestContribution = "Guest Tribute & Prompts"
-    case familyDocument = "Unified Keepsake Document"
+    case guestContribution = "Share a Memory"
+    case familyDocument = "Keepsake Memorial Book"
     case adminPortal = "Funeral Home Admin"
     case settings = "Cloud Settings & Sync"
 
@@ -114,7 +144,7 @@ struct MainContentView: View {
                     Label(tab.rawValue, systemImage: tab.icon)
                 }
             }
-            .navigationTitle("Digi-Tribute 2.0")
+            .navigationTitle("Digital Tribute")
         } detail: {
             switch appState.selectedNavTab {
             case .guestContribution:
@@ -172,18 +202,18 @@ struct SettingsView: View {
                 HStack {
                     Text("Active Categories")
                     Spacer()
-                    Text("13 Relationships")
+                    Text("20+ Relationships")
                         .foregroundColor(.secondary)
                 }
                 HStack {
-                    Text("Total Prompts")
+                    Text("Core Impact Pillars")
                     Spacer()
-                    Text("78 Questions")
+                    Text("Joy, Pain, Sacrifice, In Action")
                         .foregroundColor(.secondary)
                 }
             }
         }
         .padding()
-        .navigationTitle("Settings & Supabase Sync")
+        .navigationTitle("Settings & Cloud Sync")
     }
 }

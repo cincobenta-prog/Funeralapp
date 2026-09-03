@@ -2,44 +2,139 @@
 //  Entities.swift
 //  DigiTributeCore
 //
-//  Native Swift models matching the Supabase PostgreSQL schema for Digi-Tribute.
+//  Native Swift models matching the Supabase PostgreSQL schema for Digital Tribute.
 //
 
 import Foundation
 
-// MARK: - Relationship Type Enum
+// MARK: - Relationship Category Grouping
+public enum RelationshipCategory: String, Codable, CaseIterable, Sendable, Identifiable, Hashable {
+    case family = "Family"
+    case friends = "Friends"
+    case associatesAndAdmirers = "Associates & Admirers"
+
+    public var id: String { rawValue }
+
+    public var icon: String {
+        switch self {
+        case .family: return "heart.fill"
+        case .friends: return "person.2.fill"
+        case .associatesAndAdmirers: return "star.fill"
+        }
+    }
+}
+
+// MARK: - Impact Pillar (Joy, Pain & Resilience, Help & Sacrifice, Witnessing in Action)
+public enum ImpactPillar: String, Codable, CaseIterable, Sendable, Identifiable, Hashable {
+    case joy = "Joy & Laughter"
+    case painResilience = "Pain & Resilience"
+    case helpSacrifice = "Help & Sacrifice"
+    case witnessingInAction = "Witnessing in Action"
+
+    public var id: String { rawValue }
+
+    public var icon: String {
+        switch self {
+        case .joy: return "sparkles"
+        case .painResilience: return "shield.lefthalf.filled"
+        case .helpSacrifice: return "hand.raised.fill"
+        case .witnessingInAction: return "eye.fill"
+        }
+    }
+}
+
+// MARK: - Expanded Relationship Type Enum
 public enum RelationshipType: String, Codable, CaseIterable, Sendable, Identifiable, Hashable {
+    // 1. Family Members
     case father = "father"
     case mother = "mother"
-    case brother = "brother"
-    case sister = "sister"
     case spousePartner = "spouse_partner"
     case son = "son"
     case daughter = "daughter"
+    case brother = "brother"
+    case sister = "sister"
     case grandfather = "grandfather"
     case grandmother = "grandmother"
-    case friend = "friend"
     case extendedFamily = "extended_family"
-    case mentorColleague = "mentor_colleague"
-    case communityOther = "community_other"
+    case inLaw = "in_law"
+    case chosenFamily = "chosen_family"
+
+    // 2. Types of Friends
+    case childhoodFriend = "childhood_friend"
+    case collegeSchoolFriend = "college_school_friend"
+    case workColleagueFriend = "work_colleague_friend"
+    case lifelongFriend = "lifelong_friend"
+    case travelHobbyFriend = "travel_hobby_friend"
+
+    // 3. Associates, Mentees & Admirers
+    case menteeStudent = "mentee_student"
+    case neighbor = "neighbor"
+    case communityFaithMember = "community_faith_member"
+    case admirerAcquaintance = "admirer_acquaintance"
 
     public var id: String { rawValue }
+
+    public var category: RelationshipCategory {
+        switch self {
+        case .father, .mother, .spousePartner, .son, .daughter, .brother, .sister,
+             .grandfather, .grandmother, .extendedFamily, .inLaw, .chosenFamily:
+            return .family
+        case .childhoodFriend, .collegeSchoolFriend, .workColleagueFriend,
+             .lifelongFriend, .travelHobbyFriend:
+            return .friends
+        case .menteeStudent, .neighbor, .communityFaithMember, .admirerAcquaintance:
+            return .associatesAndAdmirers
+        }
+    }
 
     public var displayName: String {
         switch self {
         case .father: return "Father"
         case .mother: return "Mother"
-        case .brother: return "Brother"
-        case .sister: return "Sister"
         case .spousePartner: return "Spouse or Partner"
         case .son: return "Son"
         case .daughter: return "Daughter"
+        case .brother: return "Brother"
+        case .sister: return "Sister"
         case .grandfather: return "Grandfather"
         case .grandmother: return "Grandmother"
-        case .friend: return "Friend"
         case .extendedFamily: return "Extended Family (Aunt, Uncle, Cousin)"
-        case .mentorColleague: return "Mentor, Teacher, or Colleague"
-        case .communityOther: return "Community or Other"
+        case .inLaw: return "In-Law"
+        case .chosenFamily: return "Chosen Family"
+
+        case .childhoodFriend: return "Childhood Friend"
+        case .collegeSchoolFriend: return "College / School Friend"
+        case .workColleagueFriend: return "Work Colleague & Friend"
+        case .lifelongFriend: return "Lifelong / Close Friend"
+        case .travelHobbyFriend: return "Travel / Hobby Friend"
+
+        case .menteeStudent: return "Mentee or Student"
+        case .neighbor: return "Neighbor"
+        case .communityFaithMember: return "Community or Faith Member"
+        case .admirerAcquaintance: return "Admirer or Acquaintance"
+        }
+    }
+
+    public var subtitle: String {
+        switch self {
+        case .father, .mother, .grandfather, .grandmother: return "Parental & generational bonds"
+        case .spousePartner: return "Life partners & spouses"
+        case .son, .daughter: return "Children & posterity"
+        case .brother, .sister: return "Siblings & shared roots"
+        case .extendedFamily: return "Aunts, uncles, cousins"
+        case .inLaw: return "Family through marriage"
+        case .chosenFamily: return "Family chosen by the heart"
+
+        case .childhoodFriend: return "Playground, neighborhood, early years"
+        case .collegeSchoolFriend: return "Formative years, dorms, milestones"
+        case .workColleagueFriend: return "Professional trenches, mentorship, coffee breaks"
+        case .lifelongFriend: return "Decades of loyalty, shared seasons"
+        case .travelHobbyFriend: return "Adventures, sports, road trips, craft"
+
+        case .menteeStudent: return "Guided, taught, inspired"
+        case .neighbor: return "Shared streets, front porches, storms weathered"
+        case .communityFaithMember: return "Shared congregation, civic groups, service"
+        case .admirerAcquaintance: return "Inspired from near or far"
         }
     }
 }
@@ -52,9 +147,27 @@ public enum SubjectStatus: String, Codable, Sendable, Hashable {
 }
 
 public enum TributeMediaType: String, Codable, Sendable, Hashable {
-    case video = "video"
-    case audio = "audio"
+    case voiceOnly = "audio"
+    case videoAndAudio = "video"
     case photo = "photo"
+    case audio = "audio_legacy"
+    case video = "video_legacy"
+
+    public var displayName: String {
+        switch self {
+        case .voiceOnly, .audio: return "Voice Only (Audio)"
+        case .videoAndAudio, .video: return "Video & Audio"
+        case .photo: return "Photo with Caption"
+        }
+    }
+
+    public var icon: String {
+        switch self {
+        case .voiceOnly, .audio: return "waveform"
+        case .videoAndAudio, .video: return "video.fill"
+        case .photo: return "photo.fill"
+        }
+    }
 }
 
 public enum TributeStatus: String, Codable, Sendable, Hashable {
@@ -191,6 +304,7 @@ public struct Topic: Identifiable, Codable, Sendable, Equatable, Hashable {
     public let questionText: String
     public let sortOrder: Int
     public let active: Bool
+    public let pillar: ImpactPillar?
     public let createdAt: Date?
 
     public init(
@@ -199,6 +313,7 @@ public struct Topic: Identifiable, Codable, Sendable, Equatable, Hashable {
         questionText: String,
         sortOrder: Int = 1,
         active: Bool = true,
+        pillar: ImpactPillar? = nil,
         createdAt: Date? = nil
     ) {
         self.id = id
@@ -206,6 +321,7 @@ public struct Topic: Identifiable, Codable, Sendable, Equatable, Hashable {
         self.questionText = questionText
         self.sortOrder = sortOrder
         self.active = active
+        self.pillar = pillar
         self.createdAt = createdAt
     }
 
@@ -215,6 +331,7 @@ public struct Topic: Identifiable, Codable, Sendable, Equatable, Hashable {
         case questionText = "question_text"
         case sortOrder = "sort_order"
         case active
+        case pillar
         case createdAt = "created_at"
     }
 }

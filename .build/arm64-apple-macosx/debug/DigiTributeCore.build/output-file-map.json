@@ -51,12 +51,26 @@
     "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.swiftdeps",
     "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.dia"
   },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/DynamicTopicSelectorView.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView.dia"
+  },
   "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift": {
     "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.d",
     "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o",
     "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView~partial.swiftmodule",
     "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swiftdeps",
     "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MediaRecordingStudioView.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView.dia"
   },
   "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MemorialDocumentViewer.swift": {
     "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.d",
@@ -71,5 +85,12 @@
     "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView~partial.swiftmodule",
     "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swiftdeps",
     "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipSelectionView.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.dia"
   }
 }

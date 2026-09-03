@@ -45,9 +45,17 @@ public struct MemorialDocumentService: Sendable {
             .grandfather,
             .grandmother,
             .extendedFamily,
-            .friend,
-            .mentorColleague,
-            .communityOther
+            .inLaw,
+            .chosenFamily,
+            .lifelongFriend,
+            .childhoodFriend,
+            .collegeSchoolFriend,
+            .workColleagueFriend,
+            .travelHobbyFriend,
+            .menteeStudent,
+            .neighbor,
+            .communityFaithMember,
+            .admirerAcquaintance
         ]
 
         var sections: [MemorialDocumentSection] = []

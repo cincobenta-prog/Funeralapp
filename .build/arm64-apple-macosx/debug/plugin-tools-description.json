@@ -142,7 +142,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/DynamicTopicSelectorView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MediaRecordingStudioView.swift"
         },
         {
           "kind" : "file",
@@ -151,6 +159,10 @@
         {
           "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipSelectionView.swift"
         },
         {
           "kind" : "file",
@@ -172,9 +184,12 @@
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.swift.o",
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.swift.o",
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView.swift.o",
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView.swift.o",
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.swift.o",
-        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o"
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -251,7 +266,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView.swift.o"
         },
         {
           "kind" : "file",
@@ -260,6 +283,10 @@
         {
           "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.swift.o"
         },
         {
           "kind" : "file",
@@ -275,9 +302,12 @@
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/StorageService.swift",
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/SupabaseClientService.swift",
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/AdminDashboardView.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/DynamicTopicSelectorView.swift",
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MediaRecordingStudioView.swift",
         "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MemorialDocumentViewer.swift",
-        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift"
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipSelectionView.swift"
       ],
       "tempsPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build",
       "wholeModuleOptimization" : false
@@ -446,9 +476,12 @@
       "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/StorageService.swift",
       "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/SupabaseClientService.swift",
       "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/AdminDashboardView.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/DynamicTopicSelectorView.swift",
       "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MediaRecordingStudioView.swift",
       "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MemorialDocumentViewer.swift",
       "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipSelectionView.swift",
       "-I",
       "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules",
       "-target",
@@ -619,11 +652,19 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.swift.o"
         },
         {
           "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView.swift.o"
         },
         {
           "kind" : "file",
@@ -644,6 +685,10 @@
         {
           "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.swift.o"
         },
         {
           "kind" : "file",
@@ -693,7 +738,15 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/DynamicTopicSelectorView.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MediaRecordingStudioView.swift"
         },
         {
           "kind" : "file",
@@ -702,6 +755,10 @@
         {
           "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipSelectionView.swift"
         }
       ],
       "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/sources"
@@ -747,11 +804,19 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/DynamicTopicSelectorView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.swift.o"
         },
         {
           "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MediaRecordingStudioView.swift.o"
         },
         {
           "kind" : "file",
@@ -772,6 +837,10 @@
         {
           "kind" : "file",
           "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.swift.o"
         },
         {
           "kind" : "file",

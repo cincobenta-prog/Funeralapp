@@ -9,7 +9,7 @@
 import SwiftUI
 
 public struct RelationshipPromptPickerView: View {
-    @State private var selectedRelationship: RelationshipType = .friend
+    @State private var selectedRelationship: RelationshipType = .lifelongFriend
     @State private var prompts: [Topic] = []
     @State private var selectedPrompt: Topic? = nil
     @State private var isFreeform: Bool = false

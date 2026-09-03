@@ -2,7 +2,8 @@
 //  GuestEventInviteView.swift
 //  DigiTributeCore
 //
-//  Phase 2: Guest Invites, PIN Gate security, and tribute submission flow.
+//  Atoms-inspired stepped guest contribution flow for Digital Tribute.
+//  1. Event PIN Gate -> 2. Granular Relationship Picker -> 3. Dynamic Topic Prompts -> 4. Voice/Video Recording Studio.
 //
 
 import SwiftUI
@@ -11,18 +12,16 @@ public struct GuestEventInviteView: View {
     public let inviteToken: String
 
     @State private var pin: String = ""
-    @State private var isUnlocked: Bool = false
     @State private var errorMessage: String?
-    @State private var contributorName: String = ""
-    @State private var contributorEmail: String = ""
+    @State private var selectedRelationship: RelationshipType?
     @State private var selectedTopic: Topic?
-    @State private var step: SubmissionStep = .pinGate
+    @State private var currentStep: Step = .pinGate
 
-    public enum SubmissionStep {
+    public enum Step {
         case pinGate
-        case contributorInfo
-        case promptPicker
-        case recording
+        case relationshipPicker
+        case topicSelector
+        case recordingStudio
         case completed
     }
 
@@ -32,46 +31,61 @@ public struct GuestEventInviteView: View {
 
     public var body: some View {
         NavigationStack {
-            VStack(spacing: 24) {
-                switch step {
+            VStack {
+                switch currentStep {
                 case .pinGate:
                     pinGateView
 
-                case .contributorInfo:
-                    contributorInfoView
-
-                case .promptPicker:
-                    RelationshipPromptPickerView { topic in
-                        selectedTopic = topic
-                        step = .recording
+                case .relationshipPicker:
+                    RelationshipSelectionView(selectedRelationship: $selectedRelationship) { rel in
+                        selectedRelationship = rel
+                        withAnimation { currentStep = .topicSelector }
                     }
 
-                case .recording:
-                    recordingView
+                case .topicSelector:
+                    if let rel = selectedRelationship {
+                        DynamicTopicSelectorView(relationship: rel) { topic in
+                            selectedTopic = topic
+                            withAnimation { currentStep = .recordingStudio }
+                        } onBack: {
+                            withAnimation { currentStep = .relationshipPicker }
+                        }
+                    }
+
+                case .recordingStudio:
+                    if let rel = selectedRelationship {
+                        MediaRecordingStudioView(topic: selectedTopic, relationship: rel) { _ in
+                            withAnimation { currentStep = .completed }
+                        } onBack: {
+                            withAnimation { currentStep = .topicSelector }
+                        }
+                    }
 
                 case .completed:
                     completionView
                 }
             }
             .padding()
-            .navigationTitle("Digi-Tribute")
+            .navigationTitle("Digital Tribute")
         }
     }
 
     // MARK: - Step 1: PIN Gate
     private var pinGateView: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "lock.shield")
-                .font(.system(size: 56))
-                .foregroundColor(Color(red: 0.55, green: 0.45, blue: 0.25))
+        VStack(spacing: 24) {
+            Image(systemName: "heart.circle.fill")
+                .font(.system(size: 64))
+                .foregroundColor(Color.accentColor)
 
-            Text("Enter Event PIN")
-                .font(.title2.weight(.medium))
+            VStack(spacing: 8) {
+                Text("Private Memorial Event")
+                    .font(.title2.weight(.bold))
 
-            Text("This memorial event is private. Please enter the 4-digit PIN provided on your memorial booklet or invitation.")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
+                Text("Enter the 4-digit PIN found in your memorial booklet or invitation to begin.")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
 
             SecureField("4-digit PIN", text: $pin)
                 .textFieldStyle(.roundedBorder)
@@ -83,101 +97,53 @@ public struct GuestEventInviteView: View {
                     .foregroundColor(.red)
             }
 
-            Button("Unlock Memorial") {
+            Button {
                 validatePin()
+            } label: {
+                Text("Unlock Memorial")
+                    .font(.headline)
+                    .frame(maxWidth: 220)
+                    .padding(.vertical, 8)
             }
             .buttonStyle(.borderedProminent)
-            .tint(Color(red: 0.55, green: 0.45, blue: 0.25))
+            .tint(Color.accentColor)
             .disabled(pin.count < 4)
         }
-    }
-
-    // MARK: - Step 2: Contributor Details
-    private var contributorInfoView: some View {
-        VStack(spacing: 20) {
-            Text("About You")
-                .font(.title2.weight(.medium))
-
-            Text("Please enter your name and email. Your submission will be shared with the family once reviewed.")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-
-            TextField("Your Full Name", text: $contributorName)
-                .textFieldStyle(.roundedBorder)
-
-            TextField("Your Email Address", text: $contributorEmail)
-                .textFieldStyle(.roundedBorder)
-
-            Button("Continue to Prompts") {
-                if !contributorName.isEmpty && !contributorEmail.isEmpty {
-                    step = .promptPicker
-                }
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(Color(red: 0.55, green: 0.45, blue: 0.25))
-            .disabled(contributorName.isEmpty || contributorEmail.isEmpty)
-        }
-    }
-
-    // MARK: - Step 4: Recording Placeholder
-    private var recordingView: some View {
-        VStack(spacing: 20) {
-            if let topic = selectedTopic {
-                Text("“\(topic.questionText)”")
-                    .font(.title3.weight(.medium))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Color(red: 0.45, green: 0.35, blue: 0.2))
-            } else {
-                Text("Share Your Memory")
-                    .font(.title3.weight(.medium))
-            }
-
-            Text("Record your memory or upload a photo.")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-
-            HStack(spacing: 20) {
-                Button {
-                    step = .completed
-                } label: {
-                    Label("Record Video", systemImage: "video.fill")
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(Color(red: 0.55, green: 0.45, blue: 0.25))
-
-                Button {
-                    step = .completed
-                } label: {
-                    Label("Record Audio", systemImage: "mic.fill")
-                }
-                .buttonStyle(.bordered)
-            }
-        }
+        .padding(.top, 40)
     }
 
     // MARK: - Step 5: Completion
     private var completionView: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 60))
+        VStack(spacing: 24) {
+            Image(systemName: "checkmark.seal.fill")
+                .font(.system(size: 68))
                 .foregroundColor(.green)
 
             Text("Thank You for Sharing")
-                .font(.title2.weight(.medium))
+                .font(.title.weight(.bold))
 
-            Text("Your tribute has been submitted and will be reviewed by the funeral administrator before inclusion in the final memorial compilation.")
-                .font(.subheadline)
+            Text("Your memory has been submitted to the funeral administrator. Once approved, it will be integrated into the family's master memorial presentation booklet.")
+                .font(.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
+                .padding(.horizontal)
+
+            Button("Contribute Another Memory") {
+                selectedRelationship = nil
+                selectedTopic = nil
+                currentStep = .relationshipPicker
+            }
+            .buttonStyle(.bordered)
+            .padding(.top, 12)
         }
+        .padding(.top, 40)
     }
 
     private func validatePin() {
         if pin.count >= 4 {
-            step = .contributorInfo
+            withAnimation { currentStep = .relationshipPicker }
         } else {
-            errorMessage = "Invalid PIN. Please check and try again."
+            errorMessage = "Please enter a valid 4-digit PIN."
         }
     }
 }

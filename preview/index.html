@@ -3,456 +3,1262 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digi-Tribute 2.0 — Interactive Preview</title>
+  <title>Digital Tribute — Memorial Platform & Keepsake Compiler</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-warm: #fcfbf9;
-      --card-bg: #ffffff;
-      --text-main: #242220;
-      --text-muted: #736f69;
-      --gold-accent: #b3924c;
-      --gold-light: #f7f3eb;
-      --gold-border: #e3d7c1;
-      --border-subtle: #eae6df;
-      --primary: #2d3748;
-      --radius: 12px;
+      --bg-cream: #faf7f2;
+      --surface-white: #ffffff;
+      --gold-primary: #af893e;
+      --gold-hover: #96732f;
+      --gold-soft: #f5eedf;
+      --gold-border: #e6dac1;
+      --text-dark: #191714;
+      --text-muted: #69635b;
+      --text-light: #9c968c;
+      --border-subtle: #ece5d8;
+      --pill-joy: #d97706;
+      --pill-joy-bg: #fef3c7;
+      --pill-pain: #4f46e5;
+      --pill-pain-bg: #e0e7ff;
+      --pill-help: #0d9488;
+      --pill-help-bg: #ccfbf1;
+      --pill-action: #7c3aed;
+      --pill-action-bg: #ede9fe;
+      --shadow-sm: 0 2px 8px rgba(25, 23, 20, 0.03);
+      --shadow-md: 0 8px 24px rgba(25, 23, 20, 0.06);
+      --shadow-lg: 0 16px 44px rgba(175, 137, 62, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-warm);
-      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      min-height: 100vh;
       line-height: 1.6;
-      padding: 30px 16px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .brand-badge {
-      display: inline-block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 600;
-      color: var(--gold-accent);
-      background: var(--gold-light);
-      border: 1px solid var(--gold-border);
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 38px;
-      font-weight: 600;
-      color: #1a1816;
-    }
-
-    p.subtitle {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    /* Tabs */
-    .tabs {
+    /* Top Navigation Bar */
+    header.site-header {
+      background: rgba(250, 247, 242, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 32px;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
       gap: 12px;
+    }
+
+    .brand-logo {
+      font-size: 26px;
+      color: var(--gold-primary);
+    }
+
+    .brand-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-dark);
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      background: var(--gold-soft);
+      color: var(--gold-primary);
+      border: 1px solid var(--gold-border);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      background: #eee8dc;
+      padding: 4px;
+      border-radius: 30px;
+      gap: 4px;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--text-dark);
+    }
+
+    .nav-tab-btn.active {
+      background: var(--surface-white);
+      color: var(--gold-primary);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .badge-count {
+      background: #e53e3e;
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    /* Main Container */
+    main.main-content {
+      max-width: 1060px;
+      margin: 36px auto;
+      padding: 0 20px;
+    }
+
+    .panel-view {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .panel-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-banner {
+      text-align: center;
       margin-bottom: 30px;
     }
 
-    .tab-btn {
-      background: #fff;
+    .hero-banner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 600;
+      color: #1a1815;
+    }
+
+    .hero-banner p {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 620px;
+      margin: 6px auto 0;
+    }
+
+    .card-box {
+      background: var(--surface-white);
       border: 1px solid var(--border-subtle);
-      padding: 10px 22px;
-      border-radius: 30px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
     }
 
-    .tab-btn.active {
-      background: var(--gold-accent);
-      color: #fff;
-      border-color: var(--gold-accent);
-      box-shadow: 0 4px 12px rgba(179, 146, 76, 0.25);
+    /* Atoms-style Stepped Navigation */
+    .stepper-header {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .view-panel {
-      display: none;
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-light);
     }
 
-    .view-panel.active {
-      display: block;
+    .step-indicator.active {
+      color: var(--gold-primary);
     }
 
-    /* Card Wrapper */
-    .glass-card {
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    .step-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #e9e3d5;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    /* Relationship Picker */
-    .form-group {
+    .step-indicator.active .step-dot {
+      background: var(--gold-primary);
+      color: white;
+    }
+
+    /* Category Filter Segment */
+    .cat-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
       margin-bottom: 24px;
     }
 
-    label {
-      display: block;
-      font-size: 13px;
+    .cat-tab-btn {
+      background: #f4efe6;
+      border: 1px solid transparent;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13.5px;
       font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .cat-tab-btn.active {
+      background: var(--surface-white);
+      border-color: var(--gold-border);
+      color: var(--gold-primary);
+      box-shadow: 0 2px 8px rgba(175, 137, 62, 0.15);
+    }
+
+    /* Relationship Pebble Cards */
+    .rel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .rel-card {
+      background: var(--bg-cream);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .rel-card:hover {
+      border-color: var(--gold-primary);
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(175, 137, 62, 0.12);
+    }
+
+    .rel-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .rel-card-sub {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Emotional Impact Pillars */
+    .pillar-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      margin-bottom: 6px;
     }
 
-    select {
-      width: 100%;
-      padding: 12px 16px;
-      font-size: 15px;
-      border-radius: 8px;
-      border: 1px solid var(--border-subtle);
-      background: #fff;
-      color: var(--text-main);
-      font-family: inherit;
-    }
+    .pillar-joy { background: var(--pill-joy-bg); color: var(--pill-joy); }
+    .pillar-pain { background: var(--pill-pain-bg); color: var(--pill-pain); }
+    .pillar-help { background: var(--pill-help-bg); color: var(--pill-help); }
+    .pillar-action { background: var(--pill-action-bg); color: var(--pill-action); }
 
-    .prompts-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .prompt-item {
-      padding: 16px 20px;
-      border-radius: 10px;
-      background: #fdfcfb;
+    .prompt-pebble {
+      background: var(--bg-cream);
       border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
       cursor: pointer;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      margin-bottom: 12px;
       transition: all 0.15s ease;
     }
 
-    .prompt-item:hover {
-      border-color: var(--gold-accent);
-      background: var(--gold-light);
+    .prompt-pebble:hover {
+      border-color: var(--gold-primary);
+      background: var(--gold-soft);
     }
 
-    .prompt-item.selected {
-      background: var(--gold-light);
-      border-color: var(--gold-accent);
-    }
-
-    .prompt-radio {
-      margin-top: 4px;
-      accent-color: var(--gold-accent);
+    .prompt-pebble.selected {
+      border-color: var(--gold-primary);
+      background: var(--gold-soft);
+      box-shadow: 0 4px 16px rgba(175, 137, 62, 0.16);
     }
 
     .prompt-text {
       font-size: 15px;
-      font-weight: 500;
-      color: var(--text-main);
-    }
-
-    .btn-shuffle {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: none;
-      border: none;
-      color: var(--gold-accent);
-      font-size: 13px;
       font-weight: 600;
-      cursor: pointer;
-      margin-top: 14px;
-    }
-
-    /* Memorial Document Preview */
-    .document-preview {
-      background: #fff;
-      border: 1px solid var(--gold-border);
-      border-radius: 8px;
-      padding: 50px 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-
-    .doc-cover {
-      text-align: center;
-      padding-bottom: 30px;
-      border-bottom: 2px solid var(--gold-light);
-      margin-bottom: 30px;
-    }
-
-    .doc-portrait {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 3px solid var(--gold-accent);
-      margin-bottom: 16px;
-      object-fit: cover;
-    }
-
-    .doc-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
-      font-weight: 600;
-    }
-
-    .doc-dates {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-style: italic;
+      color: var(--text-dark);
       margin-top: 4px;
     }
 
-    .doc-bio {
-      max-width: 580px;
-      margin: 16px auto 0;
-      font-size: 15px;
-      color: #555;
+    /* Recording Studio */
+    .studio-box {
+      text-align: center;
+      padding: 24px;
     }
 
-    .doc-section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
+    .mode-switch {
+      display: inline-flex;
+      background: #eee8dc;
+      padding: 4px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
       font-weight: 600;
-      color: var(--gold-accent);
-      margin: 28px 0 16px;
-      border-bottom: 1px solid var(--gold-border);
-      padding-bottom: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s;
     }
 
-    .doc-tribute-card {
-      background: var(--bg-warm);
+    .mode-btn.active {
+      background: var(--surface-white);
+      color: var(--gold-primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* Waveform Animation */
+    .waveform-visualizer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      height: 70px;
+      margin: 20px 0;
+    }
+
+    .wave-bar {
+      width: 5px;
+      background: var(--gold-primary);
+      border-radius: 3px;
+      height: 12px;
+      transition: height 0.15s ease;
+    }
+
+    .recording .wave-bar {
+      animation: wavePulse 0.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes wavePulse {
+      0% { height: 10px; }
+      100% { height: 55px; }
+    }
+
+    /* Record Dial */
+    .record-dial-wrap {
+      margin: 16px auto;
+      display: inline-block;
+      position: relative;
+    }
+
+    .record-dial {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--gold-primary);
+      color: white;
+      border: none;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(175, 137, 62, 0.35);
+      transition: all 0.2s;
+    }
+
+    .record-dial.is-recording {
+      background: #e53e3e;
+      box-shadow: 0 6px 20px rgba(229, 62, 62, 0.4);
+      animation: pulseRecord 1.5s infinite;
+    }
+
+    @keyframes pulseRecord {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    .btn-gold {
+      background: var(--gold-primary);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(175, 137, 62, 0.25);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
       border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 18px;
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-cream);
+      color: var(--text-dark);
+    }
+
+    /* Keepsake Memorial Document */
+    .booklet-container {
+      background: #ffffff;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 56px 48px;
+    }
+
+    .booklet-header {
+      text-align: center;
+      padding-bottom: 36px;
+      border-bottom: 2px solid var(--gold-soft);
+      margin-bottom: 36px;
+    }
+
+    .portrait-img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--gold-primary);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       margin-bottom: 16px;
     }
 
-    .doc-prompt {
-      font-size: 14px;
+    .deceased-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
       font-weight: 600;
-      color: var(--gold-accent);
-      margin-bottom: 6px;
+      color: #181614;
     }
 
-    .doc-body {
-      font-size: 14px;
-      color: #333;
+    .memorial-dates {
+      font-size: 15px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin: 4px 0 16px;
+    }
+
+    .biography-text {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 15.5px;
+      color: #4a453e;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .document-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--gold-primary);
+      border-bottom: 1.5px solid var(--gold-border);
+      padding-bottom: 6px;
+      margin: 40px 0 20px;
+    }
+
+    .tribute-box {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .tribute-prompt-quote {
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--gold-primary);
       margin-bottom: 8px;
     }
 
-    .doc-author {
-      font-size: 12px;
+    .tribute-footer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--gold-border);
+      font-size: 13px;
       color: var(--text-muted);
-      text-align: right;
+    }
+
+    .media-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-white);
+      border: 1px solid var(--gold-border);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--gold-primary);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Admin Table */
+    .moderation-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    .moderation-table th {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 12px 16px;
+      border-bottom: 1.5px solid var(--border-subtle);
+    }
+
+    .moderation-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 14px;
+    }
+
+    .btn-approve {
+      background: #38a169;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 6px;
+    }
+
+    .btn-reject {
+      background: transparent;
+      border: 1px solid #e53e3e;
+      color: #e53e3e;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Print styling */
+    @media print {
+      header.site-header, .nav-tabs, .btn-gold, .btn-secondary, .badge-count {
+        display: none !important;
+      }
+      body, main.main-content {
+        padding: 0;
+        margin: 0;
+        background: #fff;
+      }
+      .booklet-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+      .panel-view:not(#view-document) {
+        display: none !important;
+      }
+      #view-document {
+        display: block !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand-badge">Digi-Tribute 2.0</div>
-      <h1>Memorial Platform & Question Bank</h1>
-      <p class="subtitle">Next-generation multi-format memorial collection & keepsake document compiler</p>
-    </header>
 
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('picker')">1. Relationship Question Bank</button>
-      <button class="tab-btn" onclick="switchTab('document')">2. Unified Family Document</button>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="brand-group">
+      <span class="brand-logo">🕊️</span>
+      <span class="brand-title">Digital Tribute</span>
+      <span class="brand-tag">v2.0 Active</span>
     </div>
 
-    <!-- VIEW 1: Question Bank Picker -->
-    <div id="view-picker" class="view-panel active">
-      <div class="glass-card">
-        <div class="form-group">
-          <label for="rel-select">Select Relationship to the Deceased</label>
-          <select id="rel-select" onchange="updatePrompts()">
-            <option value="father">Father</option>
-            <option value="mother">Mother</option>
-            <option value="brother">Brother</option>
-            <option value="sister">Sister</option>
-            <option value="spouse_partner" selected>Spouse or Partner</option>
-            <option value="son">Son</option>
-            <option value="daughter">Daughter</option>
-            <option value="grandfather">Grandfather</option>
-            <option value="grandmother">Grandmother</option>
-            <option value="friend">Friend</option>
-            <option value="extended_family">Extended Family (Aunt, Uncle, Cousin)</option>
-            <option value="mentor_colleague">Mentor, Teacher, or Colleague</option>
-            <option value="community_other">Community or Other</option>
-          </select>
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab-btn active" onclick="showTab('guest')">
+        🎙️ Share a Memory (Guest Flow)
+      </button>
+      <button class="nav-tab-btn" onclick="showTab('document')">
+        📖 Keepsake Memorial Book
+      </button>
+      <button class="nav-tab-btn" onclick="showTab('admin')">
+        🏛️ Funeral Home Admin <span class="badge-count" id="pending-count">2</span>
+      </button>
+      <button class="nav-tab-btn" onclick="showTab('cloud')">
+        ⚡ Cloud & Retention
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+
+    <!-- ======================================================== -->
+    <!-- VIEW 1: STEPPED GUEST FLOW (ATOMS BY METALAB INSPIRED)   -->
+    <!-- ======================================================== -->
+    <section id="view-guest" class="panel-view active">
+      <div class="hero-banner">
+        <h2>Preserve Their True Impact</h2>
+        <p>Select your connection to uncover questions that honor who they were through joy, pain, sacrifice, and action.</p>
+      </div>
+
+      <div class="card-box">
+        <!-- Stepper Indicator -->
+        <div class="stepper-header">
+          <div class="step-indicator active" id="step-ind-1">
+            <div class="step-dot">1</div> PIN Gate
+          </div>
+          <div class="step-indicator" id="step-ind-2">
+            <div class="step-dot">2</div> Relationship
+          </div>
+          <div class="step-indicator" id="step-ind-3">
+            <div class="step-dot">3</div> Dynamic Prompts
+          </div>
+          <div class="step-indicator" id="step-ind-4">
+            <div class="step-dot">4</div> Studio Recording
+          </div>
         </div>
 
-        <label>Personalized Prompts (4–6 Randomized)</label>
-        <div id="prompts-list" class="prompts-container"></div>
+        <!-- STEP 1: PIN Gate -->
+        <div id="guest-step-1" class="studio-box" style="max-width: 440px; margin: 0 auto;">
+          <div style="font-size: 44px; margin-bottom: 8px;">🔒</div>
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">Private Memorial Portal</h3>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+            Enter the 4-digit PIN from your memorial card (Demo PIN: <strong>1948</strong>)
+          </p>
+          <input type="text" id="event-pin" value="1948" style="font-size: 26px; letter-spacing: 12px; text-align: center; width: 200px; padding: 10px; border: 2px solid var(--gold-border); border-radius: var(--radius-md); background: var(--bg-cream); margin-bottom: 20px; font-weight: 700;" maxlength="4" />
+          <div>
+            <button class="btn-gold" onclick="goToGuestStep(2)">Unlock Memorial</button>
+          </div>
+        </div>
 
-        <button class="btn-shuffle" onclick="updatePrompts()">
-          ↻ Show different questions
+        <!-- STEP 2: Relationship Selector (Family, Friends, Associates) -->
+        <div id="guest-step-2" style="display: none;">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-size: 22px; font-weight: 700;">How were you connected to Eleanor?</h3>
+            <p style="font-size: 14px; color: var(--text-muted);">Choose the category that best describes your bond.</p>
+          </div>
+
+          <!-- Category Filter Bar -->
+          <div class="cat-tabs">
+            <button class="cat-tab-btn active" onclick="filterCat('family')">❤️ Family Members</button>
+            <button class="cat-tab-btn" onclick="filterCat('friends')">👥 Types of Friends</button>
+            <button class="cat-tab-btn" onclick="filterCat('associates')">⭐ Associates & Admirers</button>
+          </div>
+
+          <!-- Relationship Cards Grid -->
+          <div id="rel-cards-grid" class="rel-grid"></div>
+        </div>
+
+        <!-- STEP 3: Dynamic Prompts (Joy, Pain, Sacrifice, In Action) -->
+        <div id="guest-step-3" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <button class="btn-secondary" onclick="goToGuestStep(2)">← Change Relationship</button>
+            <span id="selected-rel-title" class="brand-tag" style="font-size: 12px;">Childhood Friend</span>
+          </div>
+
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Choose a Question to Discuss</h3>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+            These prompts are designed so those listening can learn the true impact Eleanor had on another life.
+          </p>
+
+          <div id="prompts-list-container"></div>
+
+          <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <button class="btn-secondary" onclick="shufflePrompts()">↻ Shuffle for Different Questions</button>
+            <button class="btn-gold" onclick="goToGuestStep(4)">Continue to Record</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Recording Studio (Voice Only vs Video & Audio) -->
+        <div id="guest-step-4" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <button class="btn-secondary" onclick="goToGuestStep(3)">← Back to Prompts</button>
+            <div class="mode-switch">
+              <button id="mode-voice" class="mode-btn active" onclick="switchMediaMode('voice')">🎙️ Voice Only</button>
+              <button id="mode-video" class="mode-btn" onclick="switchMediaMode('video')">📹 Video & Audio</button>
+            </div>
+          </div>
+
+          <!-- Prompt Teleprompter -->
+          <div style="background: var(--gold-soft); border: 1.5px solid var(--gold-border); border-radius: var(--radius-md); padding: 18px 24px; text-align: center; margin-bottom: 24px;">
+            <div id="teleprompter-pillar" class="pillar-tag pillar-joy">✨ Joy & Laughter</div>
+            <div id="teleprompter-prompt" style="font-size: 17px; font-weight: 700; color: #2c2518; margin-top: 4px;">
+              “What was an adventure only the two of you knew about?”
+            </div>
+          </div>
+
+          <!-- Voice Canvas -->
+          <div id="canvas-voice" class="studio-box" style="background: var(--bg-cream); border-radius: var(--radius-lg);">
+            <div class="waveform-visualizer" id="wave-visualizer">
+              <div class="wave-bar" style="height: 14px;"></div>
+              <div class="wave-bar" style="height: 24px;"></div>
+              <div class="wave-bar" style="height: 38px;"></div>
+              <div class="wave-bar" style="height: 18px;"></div>
+              <div class="wave-bar" style="height: 44px;"></div>
+              <div class="wave-bar" style="height: 28px;"></div>
+              <div class="wave-bar" style="height: 52px;"></div>
+              <div class="wave-bar" style="height: 32px;"></div>
+              <div class="wave-bar" style="height: 20px;"></div>
+              <div class="wave-bar" style="height: 48px;"></div>
+              <div class="wave-bar" style="height: 15px;"></div>
+            </div>
+
+            <div id="timer-display" style="font-size: 32px; font-weight: 700; font-family: monospace; margin: 10px 0;">00:00</div>
+
+            <div class="record-dial-wrap">
+              <button id="main-record-btn" class="record-dial" onclick="toggleRecording()">🎙️</button>
+            </div>
+
+            <p id="record-status-label" style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">
+              Tap to begin recording your voice
+            </p>
+          </div>
+
+          <!-- Video Canvas -->
+          <div id="canvas-video" class="studio-box" style="display: none; background: #111; color: #fff; border-radius: var(--radius-lg); padding: 40px 20px;">
+            <div style="font-size: 40px; margin-bottom: 8px;">📹</div>
+            <h4 style="font-size: 18px; font-weight: 600;">Camera Viewfinder Ready</h4>
+            <p style="font-size: 13px; color: #aaa; margin-bottom: 20px;">Your video and audio will record simultaneously.</p>
+            <button class="btn-gold" onclick="alert('Video camera recording initialized.')">Start Video Recording</button>
+          </div>
+
+          <!-- Contributor Details & Submit -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px;">
+            <input type="text" id="sub-name" class="form-control" placeholder="Your Full Name" value="Arthur Pendelton" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);" />
+            <input type="email" id="sub-email" class="form-control" placeholder="Your Email Address" value="arthur.p@example.com" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);" />
+          </div>
+
+          <div style="margin-top: 18px; text-align: right;">
+            <button class="btn-gold" style="width: 100%; padding: 14px;" onclick="submitGuestMemory()">
+              Submit Memory to Family Memorial Archive
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 5: Completed -->
+        <div id="guest-step-5" class="studio-box" style="display: none; max-width: 500px; margin: 0 auto;">
+          <div style="font-size: 56px; color: #38a169; margin-bottom: 12px;">✓</div>
+          <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Thank You for Sharing</h3>
+          <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
+            Your tribute has been submitted to the funeral administrator. Once approved, it will be added to Eleanor's master presentation keepsake booklet.
+          </p>
+          <button class="btn-secondary" onclick="goToGuestStep(2)">Share Another Memory</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 2: UNIFIED MEMORIAL DOCUMENT & KEEPSAKE BOOK        -->
+    <!-- ======================================================== -->
+    <section id="view-document" class="panel-view">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div>
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">Unified Memorial Presentation Document</h2>
+          <p style="color: var(--text-muted); font-size: 14px;">Assembled keepsake document formatted with emotional impact pillars and streamable media.</p>
+        </div>
+        <button class="btn-gold" onclick="window.print()">
+          🖨️ Print / Save High-Res PDF Booklet
         </button>
       </div>
-    </div>
 
-    <!-- VIEW 2: Unified Memorial Document -->
-    <div id="view-document" class="view-panel">
-      <div class="document-preview">
-        <div class="doc-cover">
-          <div class="doc-name">In Loving Memory of Eleanor Vance</div>
-          <div class="doc-dates">March 14, 1948 — November 22, 2025 · Service: St. Luke's Chapel</div>
-          <p class="doc-bio">A devoted teacher, gardener, and beloved matriarch whose warmth and storytelling touched generations of students and family members.</p>
+      <div class="booklet-container">
+        <!-- Cover Page -->
+        <div class="booklet-header">
+          <div class="portrait-wrap">
+            <img class="portrait-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Eleanor Vance" />
+          </div>
+          <h1 class="deceased-name">In Loving Memory of Eleanor Vance</h1>
+          <div class="memorial-dates">March 14, 1948 — November 22, 2025 · Service: St. Luke's Memorial Chapel</div>
+          <p class="biography-text">
+            A devoted teacher of 38 years, master botanist, and beloved matriarch whose radiant wisdom, generous kitchen, and unforgettable bedtime stories touched generations of family and community members.
+          </p>
         </div>
 
-        <div class="doc-section-title">Words from Spouse & Children</div>
-        <div class="doc-tribute-card">
-          <div class="doc-prompt">“What's something they did every day that you didn't appreciate enough until now?”</div>
-          <div class="doc-body">Every morning at 6:30, she'd leave a handwritten note on the kitchen counter with an inspirational thought or a reminder of something to look forward to.</div>
-          <div class="doc-author">— Robert Vance (Spouse)</div>
+        <!-- Section 1: Words from Spouse & Children -->
+        <div class="document-section-title">
+          <span>Words from Spouse & Children</span>
         </div>
 
-        <div class="doc-tribute-card">
-          <div class="doc-prompt">“What's a moment she made you proud in a way that surprised you?”</div>
-          <div class="doc-body">When she organized the community library drive at age 72, collecting over 3,000 books for underprivileged schools. She never looked for recognition.</div>
-          <div class="doc-author">— Claire Vance (Daughter)</div>
+        <div class="tribute-box">
+          <div class="pillar-tag pillar-help">🤝 Help & Sacrifice</div>
+          <div class="tribute-prompt-quote">“What's something she did every day that was a quiet act of devotion?”</div>
+          <p class="tribute-body-text">
+            Every morning at 6:15 AM, before anyone else was awake, Eleanor would brew fresh chamomile tea and leave a handwritten quote on the kitchen island for me and the kids. Over 52 years of marriage, that meant nearly 19,000 notes of steady, quiet encouragement.
+          </p>
+          <div class="tribute-footer-meta">
+            <span>— Robert Vance (Spouse)</span>
+            <button class="media-pill" onclick="alert('Playing audio tribute from Robert Vance (2:14)')">
+              🔊 Listen to Voice Tribute (2:14)
+            </button>
+          </div>
         </div>
 
-        <div class="doc-section-title">Memories from Friends & Colleagues</div>
-        <div class="doc-tribute-card">
-          <div class="doc-prompt">“What did she teach you about being a friend?”</div>
-          <div class="doc-body">She taught me that showing up with soup and listening without trying to fix everything is the highest form of companionship.</div>
-          <div class="doc-author">— Martha Hayes (Friend of 40 years)</div>
+        <div class="tribute-box">
+          <div class="pillar-tag pillar-joy">✨ Joy & Laughter</div>
+          <div class="tribute-prompt-quote">“What's a moment she made you proud in a way that took your breath away?”</div>
+          <p class="tribute-body-text">
+            When she was 71, she found out the local elementary school was shutting down its music program. Without asking for anyone's permission or praise, she gathered 8 retired teachers, petitioned the town board, and organized after-school string classes from our living room for 4 years.
+          </p>
+          <div class="tribute-footer-meta">
+            <span>— Claire Vance-Miller (Daughter)</span>
+            <button class="media-pill" onclick="alert('Streaming video message from Claire Vance-Miller (1:45)')">
+              🎥 Watch Video Recording (1:45)
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 2: Childhood & Lifelong Friends -->
+        <div class="document-section-title">
+          <span>Memories from Childhood & Lifelong Friends</span>
+        </div>
+
+        <div class="tribute-box">
+          <div class="pillar-tag pillar-action">👁️ Witnessing in Action</div>
+          <div class="tribute-prompt-quote">“What was an adventure or secret from growing up that only the two of you knew about?”</div>
+          <p class="tribute-body-text">
+            In the summer of 1962, we built a raft out of discarded cedar fence posts and floated all the way down to Mill Creek. When it capsized in the mud, Eleanor didn't cry—she burst into uncontrollable laughter and said, 'Now we know how to build a better one.' That was her entire philosophy on life.
+          </p>
+          <div class="tribute-footer-meta">
+            <span>— Martha Hayes (Childhood Friend)</span>
+            <button class="media-pill" onclick="alert('Playing voice recording from Martha Hayes (3:02)')">
+              🔊 Listen to Voice Tribute (3:02)
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 3: Mentees, Neighbors & Community -->
+        <div class="document-section-title">
+          <span>Mentees, Neighbors & Admirers</span>
+        </div>
+
+        <div class="tribute-box">
+          <div class="pillar-tag pillar-pain">🛡️ Pain & Resilience</div>
+          <div class="tribute-prompt-quote">“What was a specific moment they believed in your potential before you could see it yourself?”</div>
+          <p class="tribute-body-text">
+            When I failed my student teaching evaluation in 1994 and was ready to give up on education entirely, Mrs. Vance sat with me for three hours after school, rebuilt my lesson plans with me, and told me: 'You are going to change children's lives. Don't you dare let one bad day tell you who you are.' I have been teaching for 30 years because of her.
+          </p>
+          <div class="tribute-footer-meta">
+            <span>— Sarah Jenkins (Former Student & Mentee)</span>
+            <button class="media-pill" onclick="alert('Playing voice recording from Sarah Jenkins (2:40)')">
+              🔊 Listen to Voice Tribute (2:40)
+            </button>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 24px;">
+          Compiled with deep love and care for the Vance Family · Evergreen Memorial Services
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 3: ADMIN MODERATION                                 -->
+    <!-- ======================================================== -->
+    <section id="view-admin" class="panel-view">
+      <div class="hero-banner">
+        <h2>Funeral Home Administration</h2>
+        <p>Review incoming guest voice and video tributes before inclusion in the master keepsake.</p>
+      </div>
+
+      <div class="card-box">
+        <table class="moderation-table">
+          <thead>
+            <tr>
+              <th>Contributor</th>
+              <th>Relationship</th>
+              <th>Prompt & Memory Snippet</th>
+              <th>Format</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="moderation-tbody">
+            <tr id="row-1">
+              <td><strong>David Jenkins</strong><br><span style="font-size: 12px; color: var(--text-muted);">david.jenkins@example.com</span></td>
+              <td><span class="brand-tag">Childhood Friend</span></td>
+              <td><em>“What was an adventure only the two of you knew about?”</em><br>Floating down Mill Creek in cedar posts...</td>
+              <td>🎙️ Voice Only (2:10)</td>
+              <td>
+                <button class="btn-approve" onclick="approveItem('row-1', 'David Jenkins')">Approve</button>
+                <button class="btn-reject" onclick="rejectItem('row-1')">Decline</button>
+              </td>
+            </tr>
+            <tr id="row-2">
+              <td><strong>Pastor Thomas Green</strong><br><span style="font-size: 12px; color: var(--text-muted);">pastor.t@stlukes.org</span></td>
+              <td><span class="brand-tag">Community & Faith</span></td>
+              <td><em>“How did their faith shine when times were difficult?”</em><br>Her quiet support during church crises...</td>
+              <td>📹 Video (3:10)</td>
+              <td>
+                <button class="btn-approve" onclick="approveItem('row-2', 'Pastor Thomas Green')">Approve</button>
+                <button class="btn-reject" onclick="rejectItem('row-2')">Decline</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 4: CLOUD & ARCHIVAL                                 -->
+    <!-- ======================================================== -->
+    <section id="view-cloud" class="panel-view">
+      <div class="hero-banner">
+        <h2>Cloud Architecture & Retention Policy</h2>
+        <p>Supabase PostgreSQL multi-tenant schema, RLS policies, and automated 90-day storage purge monitors.</p>
+      </div>
+
+      <div class="card-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <div>
+          <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 12px;">Database & Storage Rules</h3>
+          <div style="background: var(--bg-cream); padding: 16px; border-radius: var(--radius-sm); font-size: 13.5px; line-height: 1.8;">
+            <div>🔒 <strong>Row Level Security (RLS):</strong> Enabled on all 6 tables</div>
+            <div>🏢 <strong>Multi-Tenant Isolation:</strong> Enforced by <code>funeral_home_id</code></div>
+            <div>📦 <strong>Raw Storage Bucket:</strong> <code>tributes-raw</code> (500MB upload cap)</div>
+            <div>🎬 <strong>Final Archival Bucket:</strong> <code>tributes-final</code> (Permanent)</div>
+            <div>📚 <strong>Taxonomy:</strong> 20+ Categories across Family, Friends, Associates</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 12px;">Automated 90-Day Raw Media Purge Routine</h3>
+          <div style="background: var(--bg-cream); padding: 16px; border-radius: var(--radius-sm); font-size: 13.5px; line-height: 1.8;">
+            <div>⏱️ <strong>Schedule:</strong> Daily at 03:00 UTC (via <code>pg_cron</code>)</div>
+            <div>🧹 <strong>Retention Procedure:</strong> <code>purge_expired_raw_media()</code></div>
+            <div>⚡ <strong>Edge Function:</strong> <code>functions/purge-raw-footage</code></div>
+            <div>🛡️ <strong>Archival Safety:</strong> Master keepsake booklet preserved forever</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <script>
-    const questionBank = {
-      father: [
-        "What's a piece of advice from him that you still find yourself repeating?",
-        "Describe a moment he showed up for you when it mattered most.",
-        "What did he teach you, without ever saying it out loud, just by how he lived?",
-        "What's a story about him that always makes you laugh?",
-        "How did he show love, even if he wasn't the type to say it?",
-        "What do you hope his grandchildren, or future generations, know about him?"
+    // Comprehensive Relationship Catalog
+    const relationshipsData = {
+      family: [
+        { id: 'spouse_partner', title: 'Spouse or Partner', sub: 'Life partners, spouses, soulmates' },
+        { id: 'son', title: 'Son', sub: 'Sons & growing up together' },
+        { id: 'daughter', title: 'Daughter', sub: 'Daughters & enduring bond' },
+        { id: 'father', title: 'Father', sub: 'Parental guidance and roots' },
+        { id: 'mother', title: 'Mother', sub: 'Maternal love, recipes, and habits' },
+        { id: 'brother', title: 'Brother', sub: 'Brothers & shared childhood' },
+        { id: 'sister', title: 'Sister', sub: 'Sisters & lifelong confidences' },
+        { id: 'grandfather', title: 'Grandfather', sub: 'Grandfatherly wisdom & craft' },
+        { id: 'grandmother', title: 'Grandmother', sub: 'Warmth, family traditions, comfort' },
+        { id: 'extended_family', title: 'Extended Family', sub: 'Aunts, uncles, cousins' },
+        { id: 'in_law', title: 'In-Law', sub: 'Welcomed into the family fold' },
+        { id: 'chosen_family', title: 'Chosen Family', sub: 'Bonds forged through deep loyalty' }
       ],
-      mother: [
-        "What's something she said to you that you'll never forget?",
-        "Describe a time she sacrificed something for you that you didn't fully understand until later.",
-        "What tradition or habit of hers have you carried into your own life?",
-        "What's a story that captures exactly who she was?",
-        "How did she make the people around her feel?",
-        "What do you want her grandchildren, or the next generation, to know about her?"
+      friends: [
+        { id: 'childhood_friend', title: 'Childhood Friend', sub: 'Playground, school years, growing up' },
+        { id: 'college_school_friend', title: 'College / School Friend', sub: 'Dorms, late nights, early adulthood' },
+        { id: 'work_colleague_friend', title: 'Work Colleague & Friend', sub: 'Professional trenches, mentorship, integrity' },
+        { id: 'lifelong_friend', title: 'Lifelong / Close Friend', sub: 'Decades of shared seasons and loyalty' },
+        { id: 'travel_hobby_friend', title: 'Travel / Hobby Friend', sub: 'Adventures, sports, road trips, craft' }
       ],
-      spouse_partner: [
-        "What's the real story of how you two got together?",
-        "What's something they did every day that you didn't appreciate enough until now?",
-        "Describe a moment you knew this was the person you wanted to build a life with.",
-        "What's an inside joke or private language only the two of you understood?",
-        "How did they change who you are?",
-        "What do you want anyone who loved them to know about the person behind the marriage?"
-      ],
-      son: [
-        "What's a moment he made you proud in a way that surprised you?",
-        "What did he teach you, even though you were supposed to be the one teaching him?",
-        "Describe who he was becoming, in his own words if you can capture them.",
-        "What's a memory that captures his personality perfectly?",
-        "What do you wish more people had gotten to see in him?",
-        "What do you want to make sure is never forgotten about him?"
-      ],
-      daughter: [
-        "What's a moment she made you proud in a way that surprised you?",
-        "What did she teach you, even though you were supposed to be the one teaching her?",
-        "Describe who she was becoming, in his own words if you can capture them.",
-        "What's a memory that captures her personality perfectly?",
-        "What do you wish more people had gotten to see in her?",
-        "What do you want to make sure is never forgotten about her?"
-      ],
-      friend: [
-        "How did you two actually meet, and what made the friendship stick?",
-        "What's a moment they showed up for you that you'll never forget?",
-        "What's an inside joke, nickname, or ritual only your friend group understood?",
-        "What did they teach you about being a friend?",
-        "Describe them in a way that would make someone who never met them wish they had.",
-        "What's the story you'll tell about them for the rest of your life?"
+      associates: [
+        { id: 'mentee_student', title: 'Mentee or Student', sub: 'Guided, taught, elevated' },
+        { id: 'neighbor', title: 'Neighbor', sub: 'Shared streets, front porches, storms weathered' },
+        { id: 'community_faith_member', title: 'Community or Faith Member', sub: 'Shared congregation, civic service' },
+        { id: 'admirer_acquaintance', title: 'Admirer or Acquaintance', sub: 'Inspired by their public character from near or far' }
       ]
     };
 
-    function updatePrompts() {
-      const rel = document.getElementById('rel-select').value;
-      const list = questionBank[rel] || questionBank['friend'];
-      const shuffled = [...list].sort(() => 0.5 - Math.random()).slice(0, 5);
-      
-      const container = document.getElementById('prompts-list');
-      container.innerHTML = '';
+    // Deep Impact Questions mapped to 4 Pillars (Joy, Pain, Sacrifice, Action)
+    const questionsDatabase = {
+      childhood_friend: [
+        { text: "What was an adventure or secret from growing up that only the two of you knew about?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
+        { text: "What was a moment when they defended you on the playground that you never forgot?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "What did you two laugh about so hard that it brought you to tears?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
+        { text: "How did you see their core integrity stay steady from childhood into adulthood?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
+        { text: "Describe how you two supported each other through awkward or painful growing-up years.", pillar: "pain", pillarText: "🛡️ Pain & Resilience" }
+      ],
+      college_school_friend: [
+        { text: "What was a defining late-night conversation about life or dreams you shared in school?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
+        { text: "Describe a moment during young adulthood when they helped pull you through a personal crisis.", pillar: "pain", pillarText: "🛡️ Pain & Resilience" },
+        { text: "What was an unforgettable road trip or milestone you conquered together?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
+        { text: "How did you see their intellect, passion, or ambition ignite during those formative years?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
+      ],
+      work_colleague_friend: [
+        { text: "What was it like to witness them in action when stakes were high and pressure was on?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
+        { text: "Describe a time they advocated for you, mentored you, or took heat on your behalf.", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "What was a stressful work situation that you two turned into laughter over coffee?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
+        { text: "What did they model about dignity and work ethic in a challenging environment?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
+      ],
+      lifelong_friend: [
+        { text: "What season of life tested your friendship, and how did their loyalty shine through?", pillar: "pain", pillarText: "🛡️ Pain & Resilience" },
+        { text: "Describe a time they showed up on your doorstep without asking right when your world was falling apart.", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "What was the most golden, joyful chapter of your friendship?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
+        { text: "If you could sit with them for one more quiet afternoon, what would you say to them?", pillar: "help", pillarText: "🤝 Help & Sacrifice" }
+      ],
+      mentee_student: [
+        { text: "What was a specific moment they believed in your potential before you could see it yourself?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "What was the most transformative piece of constructive truth they gave you?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "What was a moment you saw them demonstrate quiet humility when no bosses were looking?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
+        { text: "What habit or standard of excellence from them do you now pass down to others you teach?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
+      ],
+      spouse_partner: [
+        { text: "What's the real story of how you two got together, and the moment you knew?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
+        { text: "What's something they did every day that was a quiet act of devotion?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "Describe a season of deep trial or pain where you held each other up.", pillar: "pain", pillarText: "🛡️ Pain & Resilience" },
+        { text: "What do you want anyone who loved them to understand about the soul behind the marriage?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
+      ]
+    };
 
-      shuffled.forEach((q, idx) => {
-        const div = document.createElement('div');
-        div.className = 'prompt-item' + (idx === 0 ? ' selected' : '');
-        div.innerHTML = `
-          <input type="radio" name="prompt" class="prompt-radio" ${idx === 0 ? 'checked' : ''} />
-          <div class="prompt-text">${q}</div>
-        `;
-        div.onclick = () => {
-          document.querySelectorAll('.prompt-item').forEach(el => el.classList.remove('selected'));
-          div.classList.add('selected');
-          div.querySelector('input').checked = true;
-        };
-        container.appendChild(div);
-      });
+    let currentSelectedRel = 'childhood_friend';
+    let currentSelectedPrompt = null;
+    let isRecordingAudio = false;
+    let recordingTimer = null;
+    let secondsElapsed = 0;
 
-      // Freeform item
-      const freeform = document.createElement('div');
-      freeform.className = 'prompt-item';
-      freeform.innerHTML = `
-        <input type="radio" name="prompt" class="prompt-radio" />
-        <div class="prompt-text" style="font-style: italic; color: #777;">I want to speak freely without a prompt</div>
-      `;
-      freeform.onclick = () => {
-        document.querySelectorAll('.prompt-item').forEach(el => el.classList.remove('selected'));
-        freeform.classList.add('selected');
-        freeform.querySelector('input').checked = true;
-      };
-      container.appendChild(freeform);
+    function showTab(tabName) {
+      document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel-view').forEach(p => p.classList.remove('active'));
+
+      const targetBtn = Array.from(document.querySelectorAll('.nav-tab-btn')).find(b => b.getAttribute('onclick').includes(tabName));
+      if (targetBtn) targetBtn.classList.add('active');
+
+      const targetPanel = document.getElementById('view-' + tabName);
+      if (targetPanel) targetPanel.classList.add('active');
     }
 
-    function switchTab(tab) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
+    function goToGuestStep(stepNum) {
+      for (let i = 1; i <= 5; i++) {
+        const el = document.getElementById('guest-step-' + i);
+        if (el) el.style.display = (i === stepNum) ? 'block' : 'none';
+        const ind = document.getElementById('step-ind-' + i);
+        if (ind) {
+          if (i <= stepNum) ind.classList.add('active');
+          else ind.classList.remove('active');
+        }
+      }
 
-      if (tab === 'picker') {
-        document.querySelectorAll('.tab-btn')[0].classList.add('active');
-        document.getElementById('view-picker').classList.add('active');
-      } else {
-        document.querySelectorAll('.tab-btn')[1].classList.add('active');
-        document.getElementById('view-document').classList.add('active');
+      if (stepNum === 2) {
+        filterCat('friends');
+      } else if (stepNum === 3) {
+        renderPrompts();
       }
     }
 
-    updatePrompts();
+    function filterCat(catKey) {
+      document.querySelectorAll('.cat-tab-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.cat-tab-btn')).find(b => b.getAttribute('onclick').includes(catKey));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const container = document.getElementById('rel-cards-grid');
+      container.innerHTML = '';
+      const list = relationshipsData[catKey] || [];
+
+      list.forEach(rel => {
+        const div = document.createElement('div');
+        div.className = 'rel-card';
+        div.innerHTML = `
+          <div class="rel-card-title">
+            <span>${rel.title}</span>
+            <span style="font-size: 12px; color: var(--gold-primary);">→</span>
+          </div>
+          <div class="rel-card-sub">${rel.sub}</div>
+        `;
+        div.onclick = () => {
+          currentSelectedRel = rel.id;
+          document.getElementById('selected-rel-title').innerText = rel.title;
+          goToGuestStep(3);
+        };
+        container.appendChild(div);
+      });
+    }
+
+    function renderPrompts() {
+      const container = document.getElementById('prompts-list-container');
+      container.innerHTML = '';
+      const list = questionsDatabase[currentSelectedRel] || questionsDatabase['childhood_friend'];
+
+      list.forEach((q, idx) => {
+        const pebble = document.createElement('div');
+        pebble.className = 'prompt-pebble' + (idx === 0 ? ' selected' : '');
+        pebble.innerHTML = `
+          <div class="pillar-tag pillar-${q.pillar}">${q.pillarText}</div>
+          <div class="prompt-text">“${q.text}”</div>
+        `;
+        pebble.onclick = () => {
+          document.querySelectorAll('.prompt-pebble').forEach(p => p.classList.remove('selected'));
+          pebble.classList.add('selected');
+          currentSelectedPrompt = q;
+          document.getElementById('teleprompter-prompt').innerText = `“${q.text}”`;
+          document.getElementById('teleprompter-pillar').className = `pillar-tag pillar-${q.pillar}`;
+          document.getElementById('teleprompter-pillar').innerText = q.pillarText;
+        };
+        container.appendChild(pebble);
+      });
+
+      currentSelectedPrompt = list[0];
+      document.getElementById('teleprompter-prompt').innerText = `“${list[0].text}”`;
+      document.getElementById('teleprompter-pillar').className = `pillar-tag pillar-${list[0].pillar}`;
+      document.getElementById('teleprompter-pillar').innerText = list[0].pillarText;
+    }
+
+    function shufflePrompts() {
+      renderPrompts();
+    }
+
+    function switchMediaMode(mode) {
+      document.getElementById('mode-voice').classList.toggle('active', mode === 'voice');
+      document.getElementById('mode-video').classList.toggle('active', mode === 'video');
+      document.getElementById('canvas-voice').style.display = (mode === 'voice') ? 'block' : 'none';
+      document.getElementById('canvas-video').style.display = (mode === 'video') ? 'block' : 'none';
+    }
+
+    function toggleRecording() {
+      const btn = document.getElementById('main-record-btn');
+      const wave = document.getElementById('wave-visualizer');
+      const statusLbl = document.getElementById('record-status-label');
+
+      if (!isRecordingAudio) {
+        isRecordingAudio = true;
+        btn.classList.add('is-recording');
+        btn.innerText = '⏹️';
+        wave.classList.add('recording');
+        statusLbl.innerText = 'Recording live acoustic audio... Tap to stop.';
+        secondsElapsed = 0;
+        recordingTimer = setInterval(() => {
+          secondsElapsed++;
+          const m = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+          const s = String(secondsElapsed % 60).padStart(2, '0');
+          document.getElementById('timer-display').innerText = `${m}:${s}`;
+        }, 1000);
+      } else {
+        isRecordingAudio = false;
+        btn.classList.remove('is-recording');
+        btn.innerText = '▶️';
+        wave.classList.remove('recording');
+        statusLbl.innerText = `Recording saved (${document.getElementById('timer-display').innerText}). Ready to submit!`;
+        clearInterval(recordingTimer);
+      }
+    }
+
+    function submitGuestMemory() {
+      const name = document.getElementById('sub-name').value;
+      if (!name) {
+        alert('Please enter your name.');
+        return;
+      }
+
+      goToGuestStep(5);
+
+      // Add to moderation queue
+      const tbody = document.getElementById('moderation-tbody');
+      const tr = document.createElement('tr');
+      const id = 'row-' + Date.now();
+      tr.id = id;
+      tr.innerHTML = `
+        <td><strong>${name}</strong><br><span style="font-size: 12px; color: var(--text-muted);">${document.getElementById('sub-email').value}</span></td>
+        <td><span class="brand-tag">${document.getElementById('selected-rel-title').innerText}</span></td>
+        <td><em>${document.getElementById('teleprompter-prompt').innerText}</em><br>Voice tribute captured via Digital Tribute Studio...</td>
+        <td>🎙️ Voice Only (${document.getElementById('timer-display').innerText || '01:45'})</td>
+        <td>
+          <button class="btn-approve" onclick="approveItem('${id}', '${name}')">Approve</button>
+          <button class="btn-reject" onclick="rejectItem('${id}')">Decline</button>
+        </td>
+      `;
+      tbody.prepend(tr);
+
+      const countEl = document.getElementById('pending-count');
+      countEl.innerText = parseInt(countEl.innerText) + 1;
+    }
+
+    function approveItem(rowId, name) {
+      document.getElementById(rowId)?.remove();
+      const countEl = document.getElementById('pending-count');
+      countEl.innerText = Math.max(0, parseInt(countEl.innerText) - 1);
+      alert(`Tribute from ${name} approved and permanently integrated into the master memorial document.`);
+    }
+
+    function rejectItem(rowId) {
+      const reason = prompt('Reason for declining this submission (logged for audit):', 'Off-topic memory');
+      if (reason) {
+        document.getElementById(rowId)?.remove();
+        const countEl = document.getElementById('pending-count');
+        countEl.innerText = Math.max(0, parseInt(countEl.innerText) - 1);
+        alert('Tribute declined and logged.');
+      }
+    }
+
+    // Initialize
+    filterCat('friends');
   </script>
 </body>
 </html>
