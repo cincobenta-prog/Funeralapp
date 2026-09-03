@@ -92,5 +92,12 @@
     "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView~partial.swiftmodule",
     "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.swiftdeps",
     "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipSelectionView.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/TributeMediaPlayerView.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/TributeMediaPlayerView.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/TributeMediaPlayerView.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/TributeMediaPlayerView~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/TributeMediaPlayerView.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/TributeMediaPlayerView.dia"
   }
 }
