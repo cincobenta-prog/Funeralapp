@@ -2,7 +2,7 @@
 //  QuestionBankService.swift
 //  DigiTributeCore
 //
-//  Manages relationship-specific prompts for Digital Tribute across:
+//  Manages relationship-specific prompts & paired conversational follow-ups for Digital Tribute across:
 //  1. Family Members
 //  2. Expanded Types of Friends (Childhood, College, Work, Lifelong, Travel/Hobby)
 //  3. Associates, Mentees & Admirers (Student, Neighbor, Faith/Community, Admirer)
@@ -18,7 +18,7 @@ public actor QuestionBankService {
 
     public init() {}
 
-    /// Returns 4 to 6 randomized prompts for a selected relationship type.
+    /// Returns 4 to 6 randomized prompts with conversational follow-up questions for a selected relationship type.
     public func getPrompts(
         for relationship: RelationshipType,
         count: Int = 5,
@@ -46,204 +46,202 @@ public actor QuestionBankService {
         self.cachedTopics = grouped
     }
 
-    // MARK: - Built-in Fallback Prompts for All Expanded Relationships
+    // MARK: - Built-in Fallback Prompts with Conversational Follow-Up Questions
     public static func localFallbackTopics(for relationship: RelationshipType) -> [Topic] {
-        let questions: [(text: String, pillar: ImpactPillar)]
+        let questions: [(text: String, followUp: String, pillar: ImpactPillar)]
 
         switch relationship {
         // --- 1. FAMILY ---
         case .father:
             questions = [
-                ("What's a piece of advice from him that you still find yourself repeating?", .helpSacrifice),
-                ("Describe a moment he showed up for you when it mattered most.", .helpSacrifice),
-                ("What did he teach you, without ever saying it out loud, just by how he lived?", .witnessingInAction),
-                ("What's a story about him that always makes you laugh?", .joy),
-                ("How did he show love or weather hard seasons, even if he wasn't the type to speak about it?", .painResilience),
-                ("What do you hope his grandchildren or future generations know about his character?", .witnessingInAction)
-            ]
-        case .mother:
-            questions = [
-                ("What's something she said to you that you'll never forget?", .helpSacrifice),
-                ("Describe a time she sacrificed something for you that you didn't fully understand until later.", .helpSacrifice),
-                ("What tradition, joyful habit, or recipe of hers have you carried into your own life?", .joy),
-                ("What's a story that captures exactly who she was under pressure or in grief?", .painResilience),
-                ("How did she make the people around her feel valued and safe?", .witnessingInAction),
-                ("What do you want her grandchildren or the next generation to know about her heart?", .witnessingInAction)
-            ]
-        case .spousePartner:
-            questions = [
-                ("What's the real story of how you two got together, and the moment you knew?", .joy),
-                ("What's something they did every day that was a quiet act of devotion?", .helpSacrifice),
-                ("Describe a season of deep trial or pain where you held each other up.", .painResilience),
-                ("What's an inside joke or private language only the two of you understood?", .joy),
-                ("How did watching them live their life change who you became?", .witnessingInAction),
-                ("What do you want anyone who loved them to understand about the soul behind the marriage?", .witnessingInAction)
-            ]
-        case .brother:
-            questions = [
-                ("What's a memory from childhood with him that still makes you smile or burst into laughter?", .joy),
-                ("Describe a moment he had your back when everyone else walked away.", .helpSacrifice),
-                ("What was something only the two of you found funny?", .joy),
-                ("How did you see him face adversity or pain as he grew older?", .painResilience),
-                ("What did he teach you about loyalty that no one else could have?", .witnessingInAction),
-                ("What do you want people to know about him beyond being 'someone's brother'?", .witnessingInAction)
-            ]
-        case .sister:
-            questions = [
-                ("What's a memory from childhood with her that still makes you smile or laugh?", .joy),
-                ("Describe a moment she showed up with unwavering support when you were struggling.", .helpSacrifice),
-                ("What was something only the two of you shared or found funny?", .joy),
-                ("How did you see her handle difficult seasons or personal hardship with grace?", .painResilience),
-                ("What did she teach you about resilience and strength?", .witnessingInAction),
-                ("What do you want people to know about her unique spirit beyond family titles?", .witnessingInAction)
-            ]
-        case .son:
-            questions = [
-                ("What's a moment he made you proud in a way that took your breath away?", .joy),
-                ("What did he teach you, even though you were supposed to be the one teaching him?", .witnessingInAction),
-                ("Describe who he was becoming and the passions that drove him.", .witnessingInAction),
-                ("What's a memory that captures his infectious joy and personality perfectly?", .joy),
-                ("Describe a battle he fought or challenge he faced with bravery.", .painResilience),
-                ("What do you want to make sure is never forgotten about his impact on your life?", .helpSacrifice)
-            ]
-        case .daughter:
-            questions = [
-                ("What's a moment she made you proud in a way that took your breath away?", .joy),
-                ("What did she teach you, even though you were supposed to be the one teaching her?", .witnessingInAction),
-                ("Describe who she was becoming and the fierce passions that drove her.", .witnessingInAction),
-                ("What's a memory that captures her radiant joy and personality perfectly?", .joy),
-                ("Describe a difficult mountain she climbed with grace and determination.", .painResilience),
-                ("What do you want to make sure is forever remembered about her spirit?", .helpSacrifice)
-            ]
-        case .grandfather:
-            questions = [
-                ("What's a piece of grandfatherly wisdom or phrase from him that's stuck with you for life?", .helpSacrifice),
-                ("Describe a specific memory of quiet time spent just the two of you.", .joy),
-                ("What skill, trade, or family history did he pass down with his hands?", .witnessingInAction),
-                ("How did he endure hard times and model steady resilience for the whole family?", .painResilience),
-                ("What made his laugh, presence, or storytelling unmistakable?", .joy),
-                ("What do you want great-grandchildren who never met him to understand about his legacy?", .witnessingInAction)
-            ]
-        case .grandmother:
-            questions = [
-                ("What's something she used to say or do that wrapped everyone in comfort?", .helpSacrifice),
-                ("Describe a specific memory of time spent in her presence or kitchen.", .joy),
-                ("What tradition, recipe, or unspoken wisdom did she pass down to you?", .witnessingInAction),
-                ("How did she hold the family together during seasons of sorrow or change?", .painResilience),
-                ("What was an unforgettable, hilarious moment where her true personality shone?", .joy),
-                ("What do you want future generations to know about the strength of her love?", .witnessingInAction)
-            ]
-        case .extendedFamily:
-            questions = [
-                ("What was your specific bond with them, and what made holiday gatherings with them unforgettable?", .joy),
-                ("Describe a time they supported you directly when you were going through a rough patch.", .helpSacrifice),
-                ("What's a hilarious or legendary family story about them the rest of the world might not know?", .joy),
-                ("How did you see them show up for the family when someone was sick or hurting?", .painResilience),
-                ("What did watching them live their life model for you as you grew up?", .witnessingInAction),
-                ("What do you want the younger generations to cherish about their contribution to the family tree?", .witnessingInAction)
-            ]
-        case .inLaw:
-            questions = [
-                ("How did they welcome you into the family fold with warmth from the very beginning?", .helpSacrifice),
-                ("What was an unexpected moment of understanding or laughter between you two?", .joy),
-                ("What did they teach you about keeping a family bonded across different backgrounds?", .witnessingInAction),
-                ("How did they stand by the family during hospital stays, loss, or tough seasons?", .painResilience),
-                ("What funny quirk or catchphrase of theirs became beloved across the extended family?", .joy),
-                ("What will you miss most about their presence at family milestones?", .witnessingInAction)
-            ]
-        case .chosenFamily:
-            questions = [
-                ("How did you two choose each other as family, and what made that bond unbreakable?", .witnessingInAction),
-                ("Describe a painful season when they stood in the gap for you like blood family couldn't.", .painResilience),
-                ("What was a moment of pure, unrestrained joy and celebration you experienced together?", .joy),
-                ("What unspoken sacrifice did they make for you without ever asking for credit?", .helpSacrifice),
-                ("What did their devotion teach you about real, unconditional love?", .witnessingInAction),
-                ("What promise to them will you carry in your heart for the rest of your days?", .helpSacrifice)
+                ("What was an unspoken lesson your father taught you just by how he worked with his hands and lived his daily life?", "When was the last time you caught yourself doing things the exact same way, and what went through your mind?", .witnessingInAction),
+                ("Describe a moment when you were hurting and your father showed up without making a fuss.", "What did his quiet presence tell you about what it really means to protect and care for someone?", .helpSacrifice),
+                ("What is a piece of fatherly advice or catchphrase you used to roll your eyes at, but now find yourself quoting to others?", "How has carrying that advice shaped your own path in life?", .joy),
+                ("What was a heavy burden or heartbreak you saw him carry with quiet dignity?", "What did watching him endure that storm teach you about human resilience?", .painResilience),
+                ("What made his eyes light up with unmistakable pride whenever he spoke about his children?", "If you could tell him one last thing about the man he was, what would you say?", .witnessingInAction)
             ]
 
-        // --- 2. EXPANDED FRIENDSHIP TYPES ---
+        case .mother:
+            questions = [
+                ("What is a scent, sound, or ritual from your mother's kitchen that will always bring her right back to you?", "What was the unspoken love or care she poured into those moments that made you feel completely safe?", .joy),
+                ("Describe a sacrifice she quietly made for you that you didn't fully understand until you became an adult.", "When did the realization hit you of just how much love was behind that decision?", .helpSacrifice),
+                ("What was a time your mother held you together when your world was falling apart?", "What words or touch of hers gave you the strength to stand back up?", .painResilience),
+                ("What was something fiercely independent or hilarious about her that only her inner circle knew?", "What memory captures that radiant fire best of all?", .joy),
+                ("What value or tradition of hers do you most hope lives on for generations?", "How do you plan to keep that flame burning in her honor?", .witnessingInAction)
+            ]
+
+        case .spousePartner:
+            questions = [
+                ("What was the exact moment or ordinary day when you realized, 'This is the person I want to build a life with'?", "What was it about how they treated you that made you completely certain?", .joy),
+                ("What was a quiet, private ritual of love they did every single day that you already miss so deeply?", "How did that steady daily devotion anchor your home across the decades?", .helpSacrifice),
+                ("Describe the darkest valley you walked through together and how they held your hand through the storm.", "What did their unwavering loyalty in that season reveal about their soul?", .painResilience),
+                ("What was your private shorthand, inside joke, or unspoken look across a crowded room?", "What memory of laughing together in the middle of the night brings warmth to your chest?", .joy),
+                ("If you could whisper one final promise into their ear for eternity, what would you promise them?", "How will their love continue to guide your footsteps forward?", .witnessingInAction)
+            ]
+
+        case .brother:
+            questions = [
+                ("What was a childhood scheme, treehouse secret, or adventure with him that only the two of you knew about?", "What was the moment during that adventure where you both laughed until you couldn't breathe?", .joy),
+                ("Describe a time your brother had your back when everyone else walked away.", "How did his loyalty give you the courage to stand your ground?", .helpSacrifice),
+                ("What was a difficult season you watched him navigate as he grew into adulthood?", "What did seeing him endure that battle teach you about his inner strength?", .painResilience),
+                ("What was a quirky habit or funny rivalry only the two of you shared?", "How did your bond evolve over the years as you both got older?", .joy),
+                ("What do you want people to remember about who he was as a man beyond just being 'someone's brother'?", "What will you miss most about hearing his voice?", .witnessingInAction)
+            ]
+
+        case .sister:
+            questions = [
+                ("What was a secret confidence or late-night conversation with her that you never shared with anyone else?", "What did her advice in that moment reveal about how deeply she understood you?", .joy),
+                ("Describe a time your sister showed up with fierce support when you were brokenhearted.", "What did she do or say that reminded you who you were?", .helpSacrifice),
+                ("What was a hardship you watched her face with grace and determination?", "How did her resilience inspire you during your own struggles?", .painResilience),
+                ("What was an unforgettable, hilarious moment where her true spirit and laugh took over the room?", "Why will that memory always bring a smile to your face?", .joy),
+                ("What do you want the next generation of girls in the family to know about her courage and heart?", "What part of her spirit lives on in you?", .witnessingInAction)
+            ]
+
+        case .son:
+            questions = [
+                ("What was a moment your son stood up for what was right in a way that took your breath away with pride?", "What did that moment tell you about the man he had become?", .witnessingInAction),
+                ("What was an adventure or passion of his that he threw his whole soul into?", "How did his enthusiasm light up everyone around him?", .joy),
+                ("What was a time he surprised you with his tenderness toward someone who was hurting?", "What does that story tell everyone about the size of his heart?", .helpSacrifice),
+                ("What difficult challenge did you watch him face with bravery?", "What did he teach you about courage while fighting that battle?", .painResilience),
+                ("What do you want to ensure is never forgotten about his unique mark on the world?", "If you could hold his hand one more time, what would you say?", .witnessingInAction)
+            ]
+
+        case .daughter:
+            questions = [
+                ("What was a moment your daughter showed a fierce, radiant kindness that made you realize how special she was?", "How did she have a way of seeing the best in people even when they couldn't see it in themselves?", .witnessingInAction),
+                ("What is a memory of pure joy and laughter with her that plays in your mind like a favorite song?", "What made her laugh so completely infectious to everyone in the room?", .joy),
+                ("Describe a time she supported you or someone else with wisdom far beyond her years.", "Where did she get that quiet strength and empathy?", .helpSacrifice),
+                ("What mountain did she climb or adversity did she face with unwavering grace?", "What will you forever admire about how she handled that chapter of her life?", .painResilience),
+                ("What will you forever carry in your heart about the bond you shared with her?", "What was her greatest gift to your life?", .witnessingInAction)
+            ]
+
+        case .grandfather:
+            questions = [
+                ("What was a piece of grandfatherly wisdom or phrase he passed down that has guided your life?", "When was a time you leaned on his advice during a major crossroads?", .helpSacrifice),
+                ("Describe a memory of working with him in the garage, garden, or workshop.", "What did watching him work with his hands teach you about patience and craft?", .witnessingInAction),
+                ("What was a historical storm or family hardship he weathered with steady calm?", "How did his steady presence reassure the whole family during troubled waters?", .painResilience),
+                ("What was a funny, legendary grandfather story that everyone in the family loves to recount?", "What made his laugh and storytelling unmistakable?", .joy),
+                ("What do you want your own children and grandchildren to understand about his legacy?", "How did he leave the family tree stronger than he found it?", .witnessingInAction)
+            ]
+
+        case .grandmother:
+            questions = [
+                ("What was a dish, phrase, or gentle touch of hers that made you feel completely loved and safe?", "What was the secret to how she made every grandchild feel like the most special person in the room?", .joy),
+                ("Describe a time she held the family together during a time of sorrow or loss.", "Where did she find the grace and strength to keep everyone united?", .painResilience),
+                ("What was a family story, heirloom, or recipe she passed down to your hands?", "How do you plan to pass that treasure to future generations?", .witnessingInAction),
+                ("What was an unforgettable moment where her quick wit or humor surprised everyone?", "What did that moment tell you about who she was inside?", .joy),
+                ("What was the greatest life lesson she gave you about love, faith, or family?", "What would you thank her for today if she were standing beside you?", .helpSacrifice)
+            ]
+
+        case .extendedFamily:
+            questions = [
+                ("What made holiday gatherings, family reunions, or visits with them so unforgettable?", "What unique energy or laughter did they bring into the family circle?", .joy),
+                ("Describe a time they supported you directly when you were going through a difficult transition.", "What did their kindness mean to you in that season?", .helpSacrifice),
+                ("What is a legendary family story about them that the younger generation needs to hear?", "Why does that story capture their personality so well?", .joy),
+                ("How did you see them show up for the family when someone was sick or grieving?", "What did their devotion model for the rest of the cousins and relatives?", .painResilience),
+                ("What will feel most different about family milestones without their presence?", "How will you honor their memory at the next gathering?", .witnessingInAction)
+            ]
+
+        case .inLaw:
+            questions = [
+                ("How did they welcome you into the family fold and make you feel like you truly belonged?", "What was a specific gesture of hospitality or warmth that put you at ease from day one?", .helpSacrifice),
+                ("What was a moment of unexpected laughter or deep understanding between you two?", "How did your relationship grow from in-laws into genuine friends?", .joy),
+                ("What did they teach you about keeping family bonded across different traditions?", "What did you admire most about their role in the family?", .witnessingInAction),
+                ("How did they stand by the family during difficult seasons, illnesses, or losses?", "What did their quiet steadfastness mean to everyone around them?", .painResilience),
+                ("What will you miss most about their seat at the holiday table?", "What do you want others to know about the heart behind their actions?", .joy)
+            ]
+
+        case .chosenFamily:
+            questions = [
+                ("How did you two choose each other as family, and what made that bond unbreakable?", "What was the moment you knew you were family for life, no matter what?", .witnessingInAction),
+                ("Describe a painful season when they stood in the gap for you like blood family couldn't.", "How did their unconditional presence save you during that time?", .painResilience),
+                ("What was a moment of pure, unrestrained celebration or joy you experienced together?", "What made that memory so magical?", .joy),
+                ("What unspoken sacrifice did they make for you without ever asking for recognition?", "What did their devotion teach you about real love?", .helpSacrifice),
+                ("What promise to them will you carry in your heart for the rest of your days?", "How has having them in your corner permanently changed who you are?", .witnessingInAction)
+            ]
+
+        // --- 2. EXPANDED FRIENDSHIP CATEGORIES ---
         case .childhoodFriend:
             questions = [
-                ("What was an unforgettable adventure or secret from growing up that only the two of you knew about?", .joy),
-                ("What was a moment in your early years when they defended you or had your back?", .helpSacrifice),
-                ("What did you two laugh about so hard that it brought you to tears?", .joy),
-                ("How did you see their core integrity and loyalty stay steady from childhood into adulthood?", .witnessingInAction),
-                ("Describe how you two supported each other through the awkward or painful growing-up years.", .painResilience),
-                ("What do you want their family to know about the young kid they were before the world met them?", .witnessingInAction)
+                ("What was a secret adventure, hideout, or scheme from growing up that only the two of you knew about?", "What was the moment during that adventure where you both laughed until your stomachs hurt?", .joy),
+                ("Describe the moment on the playground, schoolyard, or street when they had your back against the odds.", "How did that childhood loyalty lay the foundation for who they became as an adult?", .helpSacrifice),
+                ("What was the hardest thing you both endured while growing up together, and how did your friendship survive it?", "When you look back on those early years, what core truth about their spirit never changed?", .painResilience),
+                ("What did you two talk about when dreaming about the future as kids?", "How did you see those early dreams take shape in their real life?", .witnessingInAction),
+                ("What do you want their family and children to know about the young kid they were before the world met them?", "What was the purest part of their personality?", .joy)
             ]
+
         case .collegeSchoolFriend:
             questions = [
-                ("What was a defining late-night conversation about life, dreams, or fears you shared in school?", .witnessingInAction),
-                ("Describe a moment during young adulthood when they helped pull you through an emotional or academic crisis.", .painResilience),
-                ("What was an unforgettable road trip, celebration, or milestone you conquered together?", .joy),
-                ("How did you see their intellect, passion, or ambition ignite during those formative years?", .witnessingInAction),
-                ("What was a time their generosity or friendship saved your week?", .helpSacrifice),
-                ("How did their presence during your school years shape the trajectory of who you became?", .witnessingInAction)
+                ("What was a defining late-night dorm conversation about life, dreams, or fears you shared in school?", "What was something profound they said during those years that still resonates with you?", .witnessingInAction),
+                ("Describe a moment during young adulthood when they helped pull you through an emotional or academic crisis.", "How did their friendship keep you grounded when everything felt uncertain?", .painResilience),
+                ("What was an unforgettable road trip, celebration, or campus milestone you conquered together?", "What hilarious story from that trip will you tell for the rest of your life?", .joy),
+                ("How did you see their ambition, intellect, or passion ignite during those formative years?", "What was their unmistakable talent even then?", .witnessingInAction),
+                ("How did their presence during your school years shape the trajectory of who you became as an adult?", "What did their friendship give you that no degree ever could?", .helpSacrifice)
             ]
+
         case .workColleagueFriend:
             questions = [
-                ("What was it like to witness them in action when stakes were high and pressure was on?", .witnessingInAction),
-                ("Describe a time they advocated for you, mentored you, or took heat on your behalf.", .helpSacrifice),
-                ("What was a stressful or disastrous work situation that you two turned into laughter?", .joy),
-                ("What did they model about dignity, fairness, and work ethic in a tough environment?", .witnessingInAction),
-                ("How did they support you or colleagues through burnout, personal loss, or company crises?", .painResilience),
-                ("What piece of professional or life wisdom from them will you carry into every job you ever have?", .helpSacrifice)
+                ("What was it like to witness them in the trenches when stakes were high and deadlines were crashing?", "How did their calmness, humor, or brilliant mind steer everyone through the storm?", .witnessingInAction),
+                ("Describe a time they used their influence or stood up behind closed doors to advocate for you or a teammate.", "What did that action teach you about real professional integrity and leadership?", .helpSacrifice),
+                ("What was the most disastrous work mishap or high-stress day that you two turned into legendary laughter?", "What made working with them feel less like a job and more like a shared adventure?", .joy),
+                ("What did they model about dignity, fairness, and work ethic in a tough environment?", "What principle of theirs do you now bring to your own workplace?", .witnessingInAction),
+                ("How did they support colleagues through burnout, personal loss, or company crises?", "What was their unspoken superpower in the workplace that everyone relied on?", .painResilience),
+                ("What piece of professional or life wisdom from them will you carry into every job you ever hold?", "How do you plan to mentor others the way they mentored you?", .helpSacrifice)
             ]
+
         case .lifelongFriend:
             questions = [
-                ("What season of life tested your friendship, and how did their loyalty shine through?", .painResilience),
-                ("Describe a time they showed up on your doorstep without asking right when your world was falling apart.", .helpSacrifice),
-                ("What was the most golden, joyful chapter of your friendship, and what made it so special?", .joy),
-                ("What did watching them walk through life's highs and lows teach you about human resilience?", .painResilience),
-                ("What did they teach you about yourself that no one else was loving enough to point out?", .witnessingInAction),
-                ("If you could sit with them for one more quiet afternoon, what would you say to them?", .helpSacrifice)
+                ("What season of life tested your friendship, and how did their loyalty shine through?", "How did you two always manage to pick right back up where you left off, no matter how much time had passed?", .painResilience),
+                ("Describe a time they showed up on your doorstep without asking right when your world was falling apart.", "What did they do or say that made the darkness feel bearable?", .helpSacrifice),
+                ("What was the most golden, joyful chapter of your friendship across all the decades?", "What made that era so special between you two?", .joy),
+                ("What did watching them walk through life's highs and lows teach you about human resilience?", "What was a battle you saw them fight with quiet grace?", .painResilience),
+                ("If you could sit with them for one more quiet afternoon on a front porch, what would you say to them?", "What is your final thank-you for their lifelong devotion?", .witnessingInAction)
             ]
+
         case .travelHobbyFriend:
             questions = [
-                ("What was an epic journey, expedition, or shared hobby where they were in their absolute element?", .joy),
-                ("What was a moment when things went completely sideways on an adventure, and how did their calm save the day?", .painResilience),
-                ("What did watching them pursue their craft, sport, or passion teach you about living fully?", .witnessingInAction),
-                ("What was a hilarious mishap on the road that you still recount to everyone you meet?", .joy),
-                ("What act of spontaneous generosity did they perform for a stranger or teammate?", .helpSacrifice),
-                ("What mountain, trail, water, or place in the world will forever echo with their spirit?", .witnessingInAction)
+                ("What was an epic journey, expedition, or shared passion where they were in their absolute element?", "What was a moment on that trip where you looked at them and thought, 'This is pure life'?", .joy),
+                ("What was a moment when things went completely sideways on an adventure, and how did their calm save the day?", "What made traveling or creating with them unlike anyone else in the world?", .painResilience),
+                ("What did watching them pursue their craft, sport, or hobby teach you about living with passion?", "What standard of mastery or devotion did they bring to what they loved?", .witnessingInAction),
+                ("What was a hilarious mishap on the road that you still recount to everyone you meet?", "What made their sense of adventure so contagious?", .joy),
+                ("What landscape, trail, mountain, or place in the world will forever echo with their spirit?", "Where will you go whenever you want to feel close to them again?", .witnessingInAction)
             ]
 
         // --- 3. ASSOCIATES, MENTEES & ADMIRERS ---
         case .menteeStudent:
             questions = [
-                ("What was a specific moment they believed in your potential before you believed in yourself?", .helpSacrifice),
-                ("What was the most transformative piece of constructive truth they gave you?", .helpSacrifice),
-                ("Describe how they handled it when you made a major mistake or stumbled.", .painResilience),
-                ("What was a moment you saw them demonstrate quiet humility when no cameras or bosses were watching?", .witnessingInAction),
-                ("What habit or standard of excellence from them do you now pass down to others you teach?", .witnessingInAction),
-                ("What do you want their family to understand about their enduring legacy through the people they elevated?", .helpSacrifice)
+                ("What was a specific moment they saw greatness in you when you were full of self-doubt?", "What exact words did they say that changed the way you looked at your own potential?", .helpSacrifice),
+                ("Describe a time they corrected you with tough love, grace, and total belief in your future.", "How did that lesson save you or elevate your path down the road?", .painResilience),
+                ("What standard of excellence or quiet kindness of theirs do you now pass down to others you teach?", "What do you want their family to understand about their ripple effect across the world?", .witnessingInAction),
+                ("What was a moment you saw them demonstrate quiet humility when no bosses or cameras were watching?", "What did that reveal about who they were at their core?", .witnessingInAction),
+                ("If you could show them what you have achieved today, what would you thank them for starting in you?", "How will you carry their torch forward?", .helpSacrifice)
             ]
+
         case .neighbor:
             questions = [
-                ("What was a simple, daily way their presence made your street or neighborhood feel warmer and safer?", .witnessingInAction),
-                ("Describe a time during a storm, power outage, or emergency when they were the first to check in on you.", .helpSacrifice),
-                ("What was a small driveway, garden, or sidewalk interaction that brightened your whole day?", .joy),
-                ("How did they support the neighborhood through tough times or losses?", .painResilience),
-                ("What quirky, endearing, or generous neighborhood habit of theirs will everyone miss?", .joy),
-                ("What did they teach you about what it really means to love the people next door?", .witnessingInAction)
+                ("What was a simple, daily way their presence made your street or neighborhood feel safer and warmer?", "What was a driveway wave, morning garden check, or porch greeting of theirs you will miss every day?", .witnessingInAction),
+                ("Describe a time during a storm, power outage, or emergency when they were the first to knock on your door.", "How did their neighborly instinct show what community is truly supposed to be?", .helpSacrifice),
+                ("What was a funny or endearing neighborly interaction you shared over the fence across the years?", "What made them such a beloved fixture on your block?", .joy),
+                ("What will feel most noticeably empty about your community now that their porch light is off?", "What did they teach you about what it really means to love the people living next door?", .painResilience),
+                ("What is one memory of them on your street that will stay with you forever?", "How did their life make your neighborhood a true home?", .witnessingInAction)
             ]
+
         case .communityFaithMember:
             questions = [
-                ("What was a moment you watched them serve others quietly without ever seeking applause?", .helpSacrifice),
-                ("How did their faith, conviction, or moral compass shine when times were difficult or controversial?", .painResilience),
-                ("Describe a time their words, prayer, or presence brought comfort to someone in despair.", .painResilience),
-                ("What was a joyful community celebration or event where their energy was the heartbeat of the room?", .joy),
-                ("What did watching their devotion teach the rest of the community about living with purpose?", .witnessingInAction),
-                ("How did their life make our shared community fundamentally better than they found it?", .witnessingInAction)
+                ("What was a moment you watched them serve others quietly without ever seeking applause or recognition?", "What did their selfless devotion teach the rest of the congregation or community?", .helpSacrifice),
+                ("How did their faith, conviction, or moral compass shine when times were dark or difficult?", "Describe a time their words or prayers brought comfort to someone in deep distress.", .painResilience),
+                ("What was a joyful community celebration, potluck, or event where their energy was the heartbeat of the room?", "What made their presence so uplifting to everyone around them?", .joy),
+                ("What did watching their steadfast integrity teach you about living a life of true purpose?", "How did they leave our shared community fundamentally better than they found it?", .witnessingInAction),
+                ("What scripture, prayer, or motto of theirs will echo in your mind whenever you think of them?", "What is their enduring legacy in your community?", .witnessingInAction)
             ]
+
         case .admirerAcquaintance:
             questions = [
-                ("Even observing them from a distance, what was something about how they carried themselves that commanded respect?", .witnessingInAction),
-                ("Describe a single brief interaction with them that left a lasting, positive imprint on your life.", .helpSacrifice),
-                ("What was an act of generosity, courage, or public excellence you witnessed them do?", .witnessingInAction),
-                ("How did the way they spoke about their family or values inspire you to be a better person?", .helpSacrifice),
-                ("What was something about their resilience in the face of public or personal trials that inspired you?", .painResilience),
-                ("What lesson does their life offer to anyone striving to live with honor and impact?", .witnessingInAction)
+                ("Even observing them from a distance, what was something about how they carried themselves that commanded your deep respect?", "What was a single brief interaction with them that left a lasting, positive imprint on your life?", .witnessingInAction),
+                ("What was an act of public generosity, courage, or excellence you witnessed them perform?", "How did seeing that act inspire you to be a better person in your own life?", .helpSacrifice),
+                ("How did the way they spoke about their family, craft, or values set a gold standard for those around them?", "What made their reputation so stellar among those who knew of them?", .witnessingInAction),
+                ("What was something about their resilience in the face of public or personal trials that inspired you?", "What lesson does their life offer to anyone striving to live with honor and impact?", .painResilience),
+                ("What will you remember most about the spirit and energy they brought into every room they entered?", "What is the single word that best captures their life's example?", .joy)
             ]
         }
 
@@ -252,6 +250,7 @@ public actor QuestionBankService {
                 id: UUID(),
                 relationshipType: relationship.rawValue,
                 questionText: q.text,
+                followUpPrompt: q.followUp,
                 sortOrder: index + 1,
                 active: true,
                 pillar: q.pillar,

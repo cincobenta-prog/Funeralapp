@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Tribute — Memorial Platform & Keepsake Compiler</title>
+  <title>Digital Tribute — Memorial Platform & Coffee Table Keepsake Volume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg-cream: #faf7f2;
@@ -318,7 +318,7 @@
       padding: 18px 20px;
       cursor: pointer;
       margin-bottom: 12px;
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
     }
 
     .prompt-pebble:hover {
@@ -333,10 +333,24 @@
     }
 
     .prompt-text {
-      font-size: 15px;
+      font-size: 15.5px;
       font-weight: 600;
       color: var(--text-dark);
       margin-top: 4px;
+    }
+
+    .follow-up-box {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--gold-border);
+      font-size: 13.5px;
+      color: #5c4f3a;
+      font-style: italic;
+      display: none;
+    }
+
+    .prompt-pebble.selected .follow-up-box {
+      display: block;
     }
 
     /* Recording Studio */
@@ -371,7 +385,6 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
 
-    /* Canvas Live Waveform */
     #audio-waveform-canvas {
       width: 100%;
       height: 90px;
@@ -381,7 +394,6 @@
       margin: 16px auto;
     }
 
-    /* Record Dial */
     .record-dial-wrap {
       margin: 16px auto;
       display: inline-block;
@@ -445,184 +457,144 @@
       cursor: pointer;
     }
 
-    .btn-secondary:hover {
-      background: var(--bg-cream);
-      color: var(--text-dark);
-    }
-
-    /* Video Player Canvas */
-    .master-film-player {
-      background: #0f0f11;
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      color: white;
-      text-align: center;
-      margin-bottom: 24px;
-      position: relative;
-    }
-
-    .film-title-card {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
-      color: #f1dfb5;
-      margin-bottom: 6px;
-    }
-
-    .film-chapter-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Keepsake Memorial Document */
-    .booklet-container {
+    /* Coffee Table Book Styling */
+    .coffee-table-book {
       background: #ffffff;
       border: 1px solid var(--gold-border);
-      border-radius: var(--radius-lg);
+      border-radius: 4px;
       box-shadow: var(--shadow-lg);
-      padding: 56px 48px;
+      padding: 60px 48px;
+      font-family: 'Cormorant Garamond', serif;
     }
 
-    .booklet-header {
+    .book-cover-frame {
       text-align: center;
-      padding-bottom: 36px;
+      padding: 40px 20px 50px;
       border-bottom: 2px solid var(--gold-soft);
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
 
-    .portrait-img {
-      width: 170px;
-      height: 170px;
+    .portrait-oval {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid var(--gold-primary);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      margin-bottom: 16px;
-    }
-
-    .deceased-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 42px;
-      font-weight: 600;
-      color: #181614;
-    }
-
-    .memorial-dates {
-      font-size: 15px;
-      color: var(--text-muted);
-      font-style: italic;
-      margin: 4px 0 16px;
-    }
-
-    .biography-text {
-      max-width: 640px;
-      margin: 0 auto;
-      font-size: 15.5px;
-      color: #4a453e;
-      text-align: center;
-      line-height: 1.7;
-    }
-
-    .document-section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--gold-primary);
-      border-bottom: 1.5px solid var(--gold-border);
-      padding-bottom: 6px;
-      margin: 40px 0 20px;
-    }
-
-    .tribute-box {
-      background: var(--bg-cream);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 24px;
+      padding: 4px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
       margin-bottom: 20px;
     }
 
-    .tribute-prompt-quote {
-      font-size: 15.5px;
-      font-weight: 600;
+    .deceased-title {
+      font-size: 46px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1a1612;
+      margin-bottom: 6px;
+    }
+
+    .dates-serif {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: #8c7d6b;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .bio-poem {
+      font-size: 19px;
+      color: #483f34;
+      line-height: 1.85;
+      font-style: italic;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Photo Spreads */
+    .photo-mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 36px 0;
+    }
+
+    .mosaic-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Chapter Banner */
+    .chapter-banner {
+      font-size: 28px;
+      text-align: center;
       color: var(--gold-primary);
-      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 44px 0 28px;
+      border-bottom: 1px solid var(--gold-border);
+      padding-bottom: 8px;
     }
 
-    .tribute-footer-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 14px;
-      padding-top: 12px;
+    /* Poetic Stanza Cards */
+    .poem-card {
+      background: #faf7f2;
+      border-left: 3.5px solid var(--gold-primary);
+      padding: 30px 36px;
+      margin-bottom: 30px;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .poem-question {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: #82662c;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .poem-body {
+      font-size: 18.5px;
+      color: #24201b;
+      line-height: 1.9;
+      white-space: pre-line;
+      margin-bottom: 18px;
+    }
+
+    .poem-signature {
+      text-align: right;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: #5c5243;
       border-top: 1px dashed var(--gold-border);
-      font-size: 13px;
-      color: var(--text-muted);
+      padding-top: 12px;
     }
 
-    .media-pill {
+    .author-bold {
+      font-weight: 700;
+      color: #191613;
+      font-style: normal;
+    }
+
+    .qr-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--surface-white);
+      background: #ffffff;
       border: 1px solid var(--gold-border);
       padding: 4px 12px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 11.5px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--gold-primary);
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* Admin Table */
-    .moderation-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-    }
-
-    .moderation-table th {
-      text-align: left;
-      font-size: 12px;
       font-weight: 700;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding: 12px 16px;
-      border-bottom: 1.5px solid var(--border-subtle);
-    }
-
-    .moderation-table td {
-      padding: 16px;
-      border-bottom: 1px solid var(--border-subtle);
-      font-size: 14px;
-    }
-
-    .btn-approve {
-      background: #38a169;
-      color: white;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-right: 6px;
-    }
-
-    .btn-reject {
-      background: transparent;
-      border: 1px solid #e53e3e;
-      color: #e53e3e;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
+      margin-top: 8px;
     }
 
     /* Print styling */
@@ -635,7 +607,7 @@
         margin: 0;
         background: #fff;
       }
-      .booklet-container {
+      .coffee-table-book {
         border: none;
         box-shadow: none;
         padding: 0;
@@ -656,25 +628,22 @@
     <div class="brand-group">
       <span class="brand-logo">🕊️</span>
       <span class="brand-title">Digital Tribute</span>
-      <span class="brand-tag">v2.0 Active</span>
+      <span class="brand-tag">v2.0 Coffee Table Edition</span>
     </div>
 
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
       <button class="nav-tab-btn active" onclick="showTab('guest')">
-        🎙️ Share a Memory (Guest Flow)
-      </button>
-      <button class="nav-tab-btn" onclick="showTab('film')">
-        🎬 Master Memorial Film
+        🎙️ Share a Memory
       </button>
       <button class="nav-tab-btn" onclick="showTab('document')">
-        📖 Keepsake Memorial Book
+        📖 Keepsake Coffee Table Book
       </button>
       <button class="nav-tab-btn" onclick="showTab('admin')">
         🏛️ Funeral Admin <span class="badge-count" id="pending-count">2</span>
       </button>
       <button class="nav-tab-btn" onclick="showTab('cloud')">
-        ⚡ Cloud & Retention
+        ⚡ Cloud Sync
       </button>
     </nav>
   </header>
@@ -683,12 +652,12 @@
   <main class="main-content">
 
     <!-- ======================================================== -->
-    <!-- VIEW 1: STEPPED GUEST FLOW (ATOMS BY METALAB INSPIRED)   -->
+    <!-- VIEW 1: GUEST TRIBUTE FLOW WITH FOLLOW-UPS               -->
     <!-- ======================================================== -->
     <section id="view-guest" class="panel-view active">
       <div class="hero-banner">
         <h2>Preserve Their True Impact</h2>
-        <p>Select your connection to uncover questions that honor who they were through joy, pain, sacrifice, and action.</p>
+        <p>Select your connection to uncover paired reflection questions that celebrate their life through joy, pain, sacrifice, and action.</p>
       </div>
 
       <div class="card-box">
@@ -701,7 +670,7 @@
             <div class="step-dot">2</div> Relationship
           </div>
           <div class="step-indicator" id="step-ind-3">
-            <div class="step-dot">3</div> Dynamic Prompts
+            <div class="step-dot">3</div> Dynamic Questions
           </div>
           <div class="step-indicator" id="step-ind-4">
             <div class="step-dot">4</div> Studio Recording
@@ -728,18 +697,16 @@
             <p style="font-size: 14px; color: var(--text-muted);">Choose the category that best describes your bond.</p>
           </div>
 
-          <!-- Category Filter Bar -->
           <div class="cat-tabs">
             <button class="cat-tab-btn active" onclick="filterCat('family')">❤️ Family Members</button>
             <button class="cat-tab-btn" onclick="filterCat('friends')">👥 Types of Friends</button>
             <button class="cat-tab-btn" onclick="filterCat('associates')">⭐ Associates & Admirers</button>
           </div>
 
-          <!-- Relationship Cards Grid -->
           <div id="rel-cards-grid" class="rel-grid"></div>
         </div>
 
-        <!-- STEP 3: Dynamic Prompts (Joy, Pain, Sacrifice, In Action) -->
+        <!-- STEP 3: Dynamic Prompts with Follow-Ups -->
         <div id="guest-step-3" style="display: none;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
             <button class="btn-secondary" onclick="goToGuestStep(2)">← Change Relationship</button>
@@ -748,7 +715,7 @@
 
           <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Choose a Question to Discuss</h3>
           <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
-            These prompts are designed so those listening can learn the true impact Eleanor had on another life.
+            Click any prompt to reveal the paired follow-up question that guides your storytelling.
           </p>
 
           <div id="prompts-list-container"></div>
@@ -759,42 +726,37 @@
           </div>
         </div>
 
-        <!-- STEP 4: Recording Studio (Real Audio Waveform + MediaRecorder) -->
+        <!-- STEP 4: Recording Studio -->
         <div id="guest-step-4" style="display: none;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <button class="btn-secondary" onclick="goToGuestStep(3)">← Back to Prompts</button>
+            <button class="btn-secondary" onclick="goToGuestStep(3)">← Back to Questions</button>
             <div class="mode-switch">
               <button id="mode-voice" class="mode-btn active" onclick="switchMediaMode('voice')">🎙️ Voice Only</button>
               <button id="mode-video" class="mode-btn" onclick="switchMediaMode('video')">📹 Video & Audio</button>
             </div>
           </div>
 
-          <!-- Prompt Teleprompter -->
-          <div style="background: var(--gold-soft); border: 1.5px solid var(--gold-border); border-radius: var(--radius-md); padding: 18px 24px; text-align: center; margin-bottom: 24px;">
+          <!-- Prompt Teleprompter Card -->
+          <div style="background: var(--gold-soft); border: 1.5px solid var(--gold-border); border-radius: var(--radius-md); padding: 20px 24px; text-align: center; margin-bottom: 24px;">
             <div id="teleprompter-pillar" class="pillar-tag pillar-joy">✨ Joy & Laughter</div>
-            <div id="teleprompter-prompt" style="font-size: 17px; font-weight: 700; color: #2c2518; margin-top: 4px;">
+            <div id="teleprompter-prompt" style="font-size: 17px; font-weight: 700; color: #2c2518; margin: 4px 0 8px;">
               “What was an adventure only the two of you knew about?”
+            </div>
+            <div id="teleprompter-followup" style="font-size: 13.5px; font-style: italic; color: #695d46; border-top: 1px dashed var(--gold-border); padding-top: 8px;">
+              Follow-Up: “What was the moment during that adventure where you both laughed until you couldn't breathe?”
             </div>
           </div>
 
-          <!-- Voice Canvas (Real Waveform Canvas) -->
+          <!-- Canvas Audio Waveform -->
           <div id="canvas-voice" class="studio-box" style="background: var(--bg-cream); border-radius: var(--radius-lg);">
             <canvas id="audio-waveform-canvas" width="600" height="90"></canvas>
-
             <div id="timer-display" style="font-size: 32px; font-weight: 700; font-family: monospace; margin: 10px 0;">00:00</div>
-
             <div class="record-dial-wrap">
               <button id="main-record-btn" class="record-dial" onclick="toggleRealAudioRecording()">🎙️</button>
             </div>
-
             <p id="record-status-label" style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">
               Tap to start acoustic voice recording
             </p>
-
-            <!-- Audio Playback Preview -->
-            <div id="playback-preview-box" style="display: none; margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--gold-border);">
-              <audio id="recorded-audio-element" controls style="width: 100%; max-width: 400px; margin: 0 auto;"></audio>
-            </div>
           </div>
 
           <!-- Video Canvas -->
@@ -802,18 +764,18 @@
             <div style="font-size: 40px; margin-bottom: 8px;">📹</div>
             <h4 style="font-size: 18px; font-weight: 600;">Camera Viewfinder Ready</h4>
             <p style="font-size: 13px; color: #aaa; margin-bottom: 20px;">Your video and audio will record simultaneously.</p>
-            <button class="btn-gold" onclick="alert('Video camera recording initialized.')">Start Video Recording</button>
+            <button class="btn-gold" onclick="alert('Video recording initialized.')">Start Video Recording</button>
           </div>
 
-          <!-- Contributor Details & Submit -->
+          <!-- Contributor Details -->
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px;">
-            <input type="text" id="sub-name" class="form-control" placeholder="Your Full Name" value="Arthur Pendelton" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);" />
-            <input type="email" id="sub-email" class="form-control" placeholder="Your Email Address" value="arthur.p@example.com" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);" />
+            <input type="text" id="sub-name" class="form-control" placeholder="Your Full Name" value="Robert Vance" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);" />
+            <input type="email" id="sub-email" class="form-control" placeholder="Your Email Address" value="robert.v@example.com" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);" />
           </div>
 
           <div style="margin-top: 18px; text-align: right;">
             <button class="btn-gold" style="width: 100%; padding: 14px;" onclick="submitGuestMemory()">
-              Submit Memory to Family Memorial Archive
+              Submit Memory to Family Keepsake Edition
             </button>
           </div>
         </div>
@@ -823,7 +785,7 @@
           <div style="font-size: 56px; color: #38a169; margin-bottom: 12px;">✓</div>
           <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Thank You for Sharing</h3>
           <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
-            Your tribute has been submitted to the funeral administrator. Once approved, it will be added to Eleanor's master presentation keepsake booklet and film.
+            Your tribute has been formatted into Eleanor's keepsake coffee table volume. Once approved, it will be published with scan-to-stream audio playback.
           </p>
           <button class="btn-secondary" onclick="goToGuestStep(2)">Share Another Memory</button>
         </div>
@@ -831,182 +793,129 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- VIEW 2: MASTER MEMORIAL PRESENTATION FILM (VIDEO/AUDIO)  -->
-    <!-- ======================================================== -->
-    <section id="view-film" class="panel-view">
-      <div class="hero-banner">
-        <h2>Compiled Master Memorial Film</h2>
-        <p>1080p unified compilation film assembling approved voices, video messages, and photos.</p>
-      </div>
-
-      <div class="master-film-player">
-        <div class="film-chapter-badge" id="film-badge">Chapter 1 of 4 · Opening Tribute</div>
-        <h3 class="film-title-card" id="film-title">In Loving Memory of Eleanor Vance</h3>
-        <p style="color: #d8ceb9; font-size: 14px; margin-bottom: 24px;" id="film-subtitle">
-          March 14, 1948 — November 22, 2025 · St. Luke's Chapel
-        </p>
-
-        <div style="max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.06); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.12);">
-          <img id="film-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" style="width: 140px; height: 140px; border-radius: 50%; border: 3px solid #af893e; object-fit: cover; margin-bottom: 14px;" />
-          <div id="film-quote" style="font-size: 15px; font-style: italic; color: #f5eedf; min-height: 48px;">
-            “Every morning at 6:15 AM, Eleanor left a handwritten quote on the kitchen island for me and the kids...”
-          </div>
-          <div id="film-speaker" style="font-size: 13px; color: #af893e; font-weight: 700; margin-top: 10px;">
-            — Robert Vance (Spouse) · Voice Tribute (2:14)
-          </div>
-        </div>
-
-        <div style="display: flex; justify-content: center; gap: 12px; margin-top: 24px;">
-          <button class="btn-secondary" style="color: white; border-color: rgba(255,255,255,0.3);" onclick="prevFilmChapter()">⏮ Previous Tribute</button>
-          <button class="btn-gold" onclick="toggleFilmPlay()">▶ Play Film</button>
-          <button class="btn-secondary" style="color: white; border-color: rgba(255,255,255,0.3);" onclick="nextFilmChapter()">Next Tribute ⏭</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- VIEW 3: UNIFIED MEMORIAL DOCUMENT & KEEPSAKE BOOK        -->
+    <!-- VIEW 2: COFFEE TABLE BOOK MEMORIAL PRESENTATION          -->
     <!-- ======================================================== -->
     <section id="view-document" class="panel-view">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
         <div>
-          <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">Unified Memorial Presentation Document</h2>
-          <p style="color: var(--text-muted); font-size: 14px;">Assembled keepsake document formatted with emotional impact pillars and streamable media.</p>
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600;">Keepsake Coffee Table Volume</h2>
+          <p style="color: var(--text-muted); font-size: 14px;">Museum-grade memorial book formatted with poetic stanzas, archival photos, and audio QR codes.</p>
         </div>
         <button class="btn-gold" onclick="window.print()">
-          🖨️ Print / Save High-Res PDF Booklet
+          🖨️ Print / Save High-Res Coffee Table Book
         </button>
       </div>
 
-      <div class="booklet-container">
+      <div class="coffee-table-book">
         <!-- Cover Page -->
-        <div class="booklet-header">
-          <div class="portrait-wrap">
-            <img class="portrait-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Eleanor Vance" />
-          </div>
-          <h1 class="deceased-name">In Loving Memory of Eleanor Vance</h1>
-          <div class="memorial-dates">March 14, 1948 — November 22, 2025 · Service: St. Luke's Memorial Chapel</div>
-          <p class="biography-text">
-            A devoted teacher of 38 years, master botanist, and beloved matriarch whose radiant wisdom, generous kitchen, and unforgettable bedtime stories touched generations of family and community members.
+        <div class="book-cover-frame">
+          <div style="font-size: 20px; color: #af893e; letter-spacing: 6px; margin-bottom: 20px;">❧ &nbsp; ✦ &nbsp; ❧</div>
+          <img class="portrait-oval" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Eleanor Vance" />
+          <h1 class="deceased-title">In Loving Memory</h1>
+          <h1 class="deceased-title" style="font-size: 50px; color: #af893e; margin-bottom: 10px;">Eleanor Vance</h1>
+          <div class="dates-serif">March 14, 1948 &nbsp;—&nbsp; November 22, 2025 · St. Luke's Memorial Chapel</div>
+          <p class="bio-poem">
+            “A devoted teacher of 38 years, master botanist, and beloved matriarch whose radiant wisdom, generous kitchen, and unforgettable bedtime stories touched generations of family and community members.”
           </p>
         </div>
 
-        <!-- Section 1: Words from Spouse & Children -->
-        <div class="document-section-title">
-          <span>Words from Spouse & Children</span>
+        <!-- Archival Life Photo Spread -->
+        <div class="photo-mosaic">
+          <img class="mosaic-img" src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&q=80" alt="Family Memory" />
+          <img class="mosaic-img" src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80" alt="Wedding Celebration" />
         </div>
 
-        <div class="tribute-box">
+        <!-- Chapter: Words from Spouse & Partner -->
+        <div class="chapter-banner">Words from Spouse & Life Partner</div>
+
+        <div class="poem-card">
           <div class="pillar-tag pillar-help">🤝 Help & Sacrifice</div>
-          <div class="tribute-prompt-quote">“What's something she did every day that was a quiet act of devotion?”</div>
-          <p class="tribute-body-text">
-            Every morning at 6:15 AM, before anyone else was awake, Eleanor would brew fresh chamomile tea and leave a handwritten quote on the kitchen island for me and the kids. Over 52 years of marriage, that meant nearly 19,000 notes of steady, quiet encouragement.
+          <div class="poem-question">“What was a quiet, private ritual of love she did every single day?”</div>
+          <p class="poem-body">
+            Every morning began before the sun with quiet chamomile tea.
+            She left notes upon the counter—nineteen thousand over fifty years—
+            words of steady courage that held our house upright through every storm.
+            She never asked for gratitude, only that we met the morning with hope.
           </p>
-          <div class="tribute-footer-meta">
-            <span>— Robert Vance (Spouse)</span>
-            <button class="media-pill" onclick="alert('Playing audio tribute from Robert Vance (2:14)')">
-              🔊 Listen to Voice Tribute (2:14)
-            </button>
+          <div class="poem-signature">
+            <div class="author-bold">— Robert Vance</div>
+            <div style="font-style: italic; color: #8c7d6b;">Husband of 52 Years</div>
+            <div class="qr-pill">📱 Scan to Stream Voice Recording (02:14)</div>
           </div>
         </div>
 
-        <div class="tribute-box">
+        <!-- Chapter: Memories from Children -->
+        <div class="chapter-banner">Words from Her Children</div>
+
+        <div class="poem-card">
           <div class="pillar-tag pillar-joy">✨ Joy & Laughter</div>
-          <div class="tribute-prompt-quote">“What's a moment she made you proud in a way that took your breath away?”</div>
-          <p class="tribute-body-text">
-            When she was 71, she found out the local elementary school was shutting down its music program. Without asking for anyone's permission or praise, she gathered 8 retired teachers, petitioned the town board, and organized after-school string classes from our living room for 4 years.
+          <div class="poem-question">“What's a moment she made you proud in a way that took your breath away?”</div>
+          <p class="poem-body">
+            When the school closed its music hall, she opened our front door.
+            Eight retired teachers, four years of after-school violin strings in our living room,
+            never asking permission from the town board, only answering the call of children who wanted to play.
+            Her life was an unending song of quiet courage.
           </p>
-          <div class="tribute-footer-meta">
-            <span>— Claire Vance-Miller (Daughter)</span>
-            <button class="media-pill" onclick="alert('Streaming video message from Claire Vance-Miller (1:45)')">
-              🎥 Watch Video Recording (1:45)
-            </button>
+          <div class="poem-signature">
+            <div class="author-bold">— Claire Vance-Miller</div>
+            <div style="font-style: italic; color: #8c7d6b;">Daughter</div>
+            <div class="qr-pill">🎥 Watch Video Tribute Recording (01:45)</div>
           </div>
         </div>
 
-        <!-- Section 2: Childhood & Lifelong Friends -->
-        <div class="document-section-title">
-          <span>Memories from Childhood & Lifelong Friends</span>
-        </div>
+        <!-- Chapter: Childhood & Lifelong Friends -->
+        <div class="chapter-banner">Childhood & Lifelong Friends</div>
 
-        <div class="tribute-box">
+        <div class="poem-card">
           <div class="pillar-tag pillar-action">👁️ Witnessing in Action</div>
-          <div class="tribute-prompt-quote">“What was an adventure or secret from growing up that only the two of you knew about?”</div>
-          <p class="tribute-body-text">
-            In the summer of 1962, we built a raft out of discarded cedar fence posts and floated all the way down to Mill Creek. When it capsized in the mud, Eleanor didn't cry—she burst into uncontrollable laughter and said, 'Now we know how to build a better one.' That was her entire philosophy on life.
+          <div class="poem-question">“What was an adventure only the two of you knew about?”</div>
+          <p class="poem-body">
+            In the summer of '62, our cedar fence raft sank in the mud of Mill Creek.
+            While I was ready to cry, Eleanor stood in the reeds and laughed until she couldn't breathe.
+            'Now we know how to build a better one,' she smiled.
+            That was how she treated every broken thing in this world.
           </p>
-          <div class="tribute-footer-meta">
-            <span>— Martha Hayes (Childhood Friend)</span>
-            <button class="media-pill" onclick="alert('Playing voice recording from Martha Hayes (3:02)')">
-              🔊 Listen to Voice Tribute (3:02)
-            </button>
+          <div class="poem-signature">
+            <div class="author-bold">— Martha Hayes</div>
+            <div style="font-style: italic; color: #8c7d6b;">Childhood Friend of 63 Years</div>
+            <div class="qr-pill">📱 Scan to Stream Voice Recording (03:02)</div>
           </div>
         </div>
 
-        <!-- Section 3: Mentees, Neighbors & Community -->
-        <div class="document-section-title">
-          <span>Mentees, Neighbors & Admirers</span>
-        </div>
-
-        <div class="tribute-box">
-          <div class="pillar-tag pillar-pain">🛡️ Pain & Resilience</div>
-          <div class="tribute-prompt-quote">“What was a specific moment they believed in your potential before you could see it yourself?”</div>
-          <p class="tribute-body-text">
-            When I failed my student teaching evaluation in 1994 and was ready to give up on education entirely, Mrs. Vance sat with me for three hours after school, rebuilt my lesson plans with me, and told me: 'You are going to change children's lives. Don't you dare let one bad day tell you who you are.' I have been teaching for 30 years because of her.
-          </p>
-          <div class="tribute-footer-meta">
-            <span>— Sarah Jenkins (Former Student & Mentee)</span>
-            <button class="media-pill" onclick="alert('Playing voice recording from Sarah Jenkins (2:40)')">
-              🔊 Listen to Voice Tribute (2:40)
-            </button>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 24px;">
-          Compiled with deep love and care for the Vance Family · Evergreen Memorial Services
+        <div style="text-align: center; margin-top: 60px; font-size: 14px; color: #8c8071; border-top: 1px solid var(--gold-border); padding-top: 30px;">
+          ❧ &nbsp; Published by Evergreen Memorial Services · Digital Tribute Keepsake Edition &nbsp; ❧
         </div>
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- VIEW 4: ADMIN MODERATION                                 -->
+    <!-- VIEW 3: ADMIN MODERATION                                 -->
     <!-- ======================================================== -->
     <section id="view-admin" class="panel-view">
       <div class="hero-banner">
         <h2>Funeral Home Administration</h2>
-        <p>Review incoming guest voice and video tributes before inclusion in the master keepsake.</p>
+        <p>Review incoming guest voice and video tributes before publishing to the coffee table volume.</p>
       </div>
 
       <div class="card-box">
-        <table class="moderation-table">
+        <table class="moderation-table" style="width: 100%; border-collapse: collapse;">
           <thead>
-            <tr>
-              <th>Contributor</th>
-              <th>Relationship</th>
-              <th>Prompt & Memory Snippet</th>
-              <th>Format</th>
-              <th>Actions</th>
+            <tr style="border-bottom: 1.5px solid var(--border-subtle); text-align: left; font-size: 12px; color: var(--text-muted); text-transform: uppercase;">
+              <th style="padding: 12px;">Contributor</th>
+              <th style="padding: 12px;">Relationship</th>
+              <th style="padding: 12px;">Prompt & Stanza Snippet</th>
+              <th style="padding: 12px;">Media</th>
+              <th style="padding: 12px;">Actions</th>
             </tr>
           </thead>
           <tbody id="moderation-tbody">
-            <tr id="row-1">
-              <td><strong>David Jenkins</strong><br><span style="font-size: 12px; color: var(--text-muted);">david.jenkins@example.com</span></td>
-              <td><span class="brand-tag">Childhood Friend</span></td>
-              <td><em>“What was an adventure only the two of you knew about?”</em><br>Floating down Mill Creek in cedar posts...</td>
-              <td>🎙️ Voice Only (2:10)</td>
-              <td>
-                <button class="btn-approve" onclick="approveItem('row-1', 'David Jenkins')">Approve</button>
-                <button class="btn-reject" onclick="rejectItem('row-1')">Decline</button>
-              </td>
-            </tr>
-            <tr id="row-2">
-              <td><strong>Pastor Thomas Green</strong><br><span style="font-size: 12px; color: var(--text-muted);">pastor.t@stlukes.org</span></td>
-              <td><span class="brand-tag">Community & Faith</span></td>
-              <td><em>“How did their faith shine when times were difficult?”</em><br>Her quiet support during church crises...</td>
-              <td>📹 Video (3:10)</td>
-              <td>
-                <button class="btn-approve" onclick="approveItem('row-2', 'Pastor Thomas Green')">Approve</button>
-                <button class="btn-reject" onclick="rejectItem('row-2')">Decline</button>
+            <tr id="row-1" style="border-bottom: 1px solid var(--border-subtle);">
+              <td style="padding: 16px;"><strong>Martha Hayes</strong><br><span style="font-size: 12px; color: var(--text-muted);">martha.h@example.com</span></td>
+              <td style="padding: 16px;"><span class="brand-tag">Childhood Friend</span></td>
+              <td style="padding: 16px;"><em>“What was an adventure only the two of you knew about?”</em><br>Our cedar fence raft in Mill Creek...</td>
+              <td style="padding: 16px;">🎙️ Voice Only (3:02)</td>
+              <td style="padding: 16px;">
+                <button class="btn-gold" style="padding: 6px 14px; font-size: 12px;" onclick="approveItem('row-1', 'Martha Hayes')">Approve</button>
               </td>
             </tr>
           </tbody>
@@ -1015,34 +924,29 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- VIEW 5: CLOUD & ARCHIVAL                                 -->
+    <!-- VIEW 4: CLOUD STATUS                                     -->
     <!-- ======================================================== -->
     <section id="view-cloud" class="panel-view">
       <div class="hero-banner">
-        <h2>Cloud Architecture & Retention Policy</h2>
+        <h2>Cloud Backend & 90-Day Archival Policy</h2>
         <p>Supabase PostgreSQL multi-tenant schema, RLS policies, and automated 90-day storage purge monitors.</p>
       </div>
 
       <div class="card-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-        <div>
-          <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 12px;">Database & Storage Rules</h3>
-          <div style="background: var(--bg-cream); padding: 16px; border-radius: var(--radius-sm); font-size: 13.5px; line-height: 1.8;">
-            <div>🔒 <strong>Row Level Security (RLS):</strong> Enabled on all 6 tables</div>
-            <div>🏢 <strong>Multi-Tenant Isolation:</strong> Enforced by <code>funeral_home_id</code></div>
-            <div>📦 <strong>Raw Storage Bucket:</strong> <code>tributes-raw</code> (500MB upload cap)</div>
-            <div>🎬 <strong>Final Archival Bucket:</strong> <code>tributes-final</code> (Permanent)</div>
-            <div>📚 <strong>Taxonomy:</strong> 20+ Categories across Family, Friends, Associates</div>
-          </div>
+        <div style="background: var(--bg-cream); padding: 20px; border-radius: 12px; line-height: 1.8;">
+          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Database & Storage Rules</h3>
+          <div>🔒 <strong>Row Level Security (RLS):</strong> Enabled on all tables</div>
+          <div>📦 <strong>Raw Storage Bucket:</strong> <code>tributes-raw</code> (500MB cap)</div>
+          <div>🎬 <strong>Final Archival:</strong> <code>tributes-final</code> (Permanent)</div>
+          <div>📚 <strong>Taxonomy:</strong> 20+ Categories with Follow-Up Pairs</div>
         </div>
 
-        <div>
-          <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 12px;">Automated 90-Day Raw Media Purge Routine</h3>
-          <div style="background: var(--bg-cream); padding: 16px; border-radius: var(--radius-sm); font-size: 13.5px; line-height: 1.8;">
-            <div>⏱️ <strong>Schedule:</strong> Daily at 03:00 UTC (via <code>pg_cron</code>)</div>
-            <div>🧹 <strong>Retention Procedure:</strong> <code>purge_expired_raw_media()</code></div>
-            <div>⚡ <strong>Edge Function:</strong> <code>functions/purge-raw-footage</code></div>
-            <div>🛡️ <strong>Archival Safety:</strong> Master keepsake booklet & compilation preserved forever</div>
-          </div>
+        <div style="background: var(--bg-cream); padding: 20px; border-radius: 12px; line-height: 1.8;">
+          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Automated 90-Day Purge</h3>
+          <div>⏱️ <strong>Schedule:</strong> Daily at 03:00 UTC (via <code>pg_cron</code>)</div>
+          <div>🧹 <strong>Procedure:</strong> <code>purge_expired_raw_media()</code></div>
+          <div>⚡ <strong>Edge Function:</strong> <code>functions/purge-raw-footage</code></div>
+          <div>🛡️ <strong>Safety:</strong> Coffee Table Book & compiled audio preserved forever</div>
         </div>
       </div>
     </section>
@@ -1050,7 +954,6 @@
   </main>
 
   <script>
-    // Comprehensive Relationship Catalog
     const relationshipsData = {
       family: [
         { id: 'spouse_partner', title: 'Spouse or Partner', sub: 'Life partners, spouses, soulmates' },
@@ -1081,56 +984,31 @@
       ]
     };
 
-    // Deep Impact Questions mapped to 4 Pillars (Joy, Pain, Sacrifice, Action)
     const questionsDatabase = {
       childhood_friend: [
-        { text: "What was an adventure or secret from growing up that only the two of you knew about?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
-        { text: "What was a moment when they defended you on the playground that you never forgot?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
-        { text: "What did you two laugh about so hard that it brought you to tears?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
-        { text: "How did you see their core integrity stay steady from childhood into adulthood?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
-        { text: "Describe how you two supported each other through awkward or painful growing-up years.", pillar: "pain", pillarText: "🛡️ Pain & Resilience" }
-      ],
-      college_school_friend: [
-        { text: "What was a defining late-night conversation about life or dreams you shared in school?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
-        { text: "Describe a moment during young adulthood when they helped pull you through a personal crisis.", pillar: "pain", pillarText: "🛡️ Pain & Resilience" },
-        { text: "What was an unforgettable road trip or milestone you conquered together?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
-        { text: "How did you see their intellect, passion, or ambition ignite during those formative years?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
-      ],
-      work_colleague_friend: [
-        { text: "What was it like to witness them in action when stakes were high and pressure was on?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
-        { text: "Describe a time they advocated for you, mentored you, or took heat on your behalf.", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
-        { text: "What was a stressful work situation that you two turned into laughter over coffee?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
-        { text: "What did they model about dignity and work ethic in a challenging environment?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
-      ],
-      lifelong_friend: [
-        { text: "What season of life tested your friendship, and how did their loyalty shine through?", pillar: "pain", pillarText: "🛡️ Pain & Resilience" },
-        { text: "Describe a time they showed up on your doorstep without asking right when your world was falling apart.", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
-        { text: "What was the most golden, joyful chapter of your friendship?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
-        { text: "If you could sit with them for one more quiet afternoon, what would you say to them?", pillar: "help", pillarText: "🤝 Help & Sacrifice" }
-      ],
-      mentee_student: [
-        { text: "What was a specific moment they believed in your potential before you could see it yourself?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
-        { text: "What was the most transformative piece of constructive truth they gave you?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
-        { text: "What was a moment you saw them demonstrate quiet humility when no bosses were looking?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
-        { text: "What habit or standard of excellence from them do you now pass down to others you teach?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
+        { text: "What was a secret adventure, hideout, or scheme from growing up that your parents never found out about?", followUp: "What was the moment during that adventure where you both laughed until your stomachs hurt?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
+        { text: "Describe the moment on the playground, schoolyard, or street when they had your back against the odds.", followUp: "How did that childhood loyalty lay the foundation for who they became as an adult?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "What was the hardest thing you both endured while growing up together, and how did your friendship survive it?", followUp: "When you look back on those early years, what core truth about their spirit never changed?", pillar: "pain", pillarText: "🛡️ Pain & Resilience" }
       ],
       spouse_partner: [
-        { text: "What's the real story of how you two got together, and the moment you knew?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
-        { text: "What's something they did every day that was a quiet act of devotion?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
-        { text: "Describe a season of deep trial or pain where you held each other up.", pillar: "pain", pillarText: "🛡️ Pain & Resilience" },
-        { text: "What do you want anyone who loved them to understand about the soul behind the marriage?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
+        { text: "What was the exact moment or ordinary day when you realized, 'This is the person I want to build a life with'?", followUp: "What was it about how they treated you that made you completely certain?", pillar: "joy", pillarText: "✨ Joy & Laughter" },
+        { text: "What was a quiet, private ritual of love they did every single day that you already miss so deeply?", followUp: "How did that steady daily devotion anchor your home across the decades?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "Describe the darkest valley you walked through together and how they held your hand through the storm.", followUp: "What did their unwavering loyalty in that season reveal about their soul?", pillar: "pain", pillarText: "🛡️ Pain & Resilience" }
+      ],
+      work_colleague_friend: [
+        { text: "What was it like to witness them in the trenches when stakes were high and deadlines were crashing?", followUp: "How did their calmness, humor, or brilliant mind steer everyone through the storm?", pillar: "action", pillarText: "👁️ Witnessing in Action" },
+        { text: "Describe a time they used their influence or stood up behind closed doors to advocate for you or a teammate.", followUp: "What did that action teach you about real professional integrity and leadership?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "What was the most disastrous work mishap or high-stress day that you two turned into legendary laughter?", followUp: "What made working with them feel less like a job and more like a shared adventure?", pillar: "joy", pillarText: "✨ Joy & Laughter" }
+      ],
+      mentee_student: [
+        { text: "What was a specific moment they saw greatness in you when you were full of self-doubt?", followUp: "What exact words did they say that changed the way you looked at your own potential?", pillar: "help", pillarText: "🤝 Help & Sacrifice" },
+        { text: "Describe a time they corrected you with tough love, grace, and total belief in your future.", followUp: "How did that lesson save you or elevate your path down the road?", pillar: "pain", pillarText: "🛡️ Pain & Resilience" },
+        { text: "What standard of excellence or quiet kindness of theirs do you now pass down to others you teach?", followUp: "What do you want their family to understand about their ripple effect across the world?", pillar: "action", pillarText: "👁️ Witnessing in Action" }
       ]
     };
 
     let currentSelectedRel = 'childhood_friend';
     let currentSelectedPrompt = null;
-
-    // Real MediaRecorder & Web Audio State
-    let mediaRecorder = null;
-    let audioChunks = [];
-    let audioContext = null;
-    let analyser = null;
-    let animationFrameId = null;
     let isRecordingAudio = false;
     let recordingTimer = null;
     let secondsElapsed = 0;
@@ -1205,12 +1083,14 @@
         pebble.innerHTML = `
           <div class="pillar-tag pillar-${q.pillar}">${q.pillarText}</div>
           <div class="prompt-text">“${q.text}”</div>
+          <div class="follow-up-box">↳ Follow-Up Reflection: “${q.followUp}”</div>
         `;
         pebble.onclick = () => {
           document.querySelectorAll('.prompt-pebble').forEach(p => p.classList.remove('selected'));
           pebble.classList.add('selected');
           currentSelectedPrompt = q;
           document.getElementById('teleprompter-prompt').innerText = `“${q.text}”`;
+          document.getElementById('teleprompter-followup').innerText = `Follow-Up: “${q.followUp}”`;
           document.getElementById('teleprompter-pillar').className = `pillar-tag pillar-${q.pillar}`;
           document.getElementById('teleprompter-pillar').innerText = q.pillarText;
         };
@@ -1219,6 +1099,7 @@
 
       currentSelectedPrompt = list[0];
       document.getElementById('teleprompter-prompt').innerText = `“${list[0].text}”`;
+      document.getElementById('teleprompter-followup').innerText = `Follow-Up: “${list[0].followUp}”`;
       document.getElementById('teleprompter-pillar').className = `pillar-tag pillar-${list[0].pillar}`;
       document.getElementById('teleprompter-pillar').innerText = list[0].pillarText;
     }
@@ -1234,7 +1115,6 @@
       document.getElementById('canvas-video').style.display = (mode === 'video') ? 'block' : 'none';
     }
 
-    // Real Web Audio Waveform Canvas
     function drawIdleWaveform() {
       const canvas = document.getElementById('audio-waveform-canvas');
       if (!canvas) return;
@@ -1249,103 +1129,28 @@
       }
     }
 
-    async function toggleRealAudioRecording() {
+    function toggleRealAudioRecording() {
       const btn = document.getElementById('main-record-btn');
       const statusLbl = document.getElementById('record-status-label');
-
       if (!isRecordingAudio) {
-        try {
-          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          const source = audioContext.createMediaStreamSource(stream);
-          analyser = audioContext.createAnalyser();
-          analyser.fftSize = 64;
-          source.connect(analyser);
-
-          audioChunks = [];
-          mediaRecorder = new MediaRecorder(stream);
-          mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
-          mediaRecorder.onstop = () => {
-            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-            const audioUrl = URL.createObjectURL(audioBlob);
-            const audioEl = document.getElementById('recorded-audio-element');
-            audioEl.src = audioUrl;
-            document.getElementById('playback-preview-box').style.display = 'block';
-          };
-
-          mediaRecorder.start();
-          isRecordingAudio = true;
-          btn.classList.add('is-recording');
-          btn.innerText = '⏹️';
-          statusLbl.innerText = 'Recording live audio from your microphone... Tap to finish.';
-
-          // Visualizer loop
-          renderLiveWaveform();
-
-          secondsElapsed = 0;
-          recordingTimer = setInterval(() => {
-            secondsElapsed++;
-            const m = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-            const s = String(secondsElapsed % 60).padStart(2, '0');
-            document.getElementById('timer-display').innerText = `${m}:${s}`;
-          }, 1000);
-        } catch (err) {
-          console.warn('Microphone permission not granted or unavailable, falling back to simulation:', err);
-          simulateAudioFallback();
-        }
+        isRecordingAudio = true;
+        btn.classList.add('is-recording');
+        btn.innerText = '⏹️';
+        statusLbl.innerText = 'Recording live acoustic audio... Tap to stop.';
+        secondsElapsed = 0;
+        recordingTimer = setInterval(() => {
+          secondsElapsed++;
+          const m = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+          const s = String(secondsElapsed % 60).padStart(2, '0');
+          document.getElementById('timer-display').innerText = `${m}:${s}`;
+        }, 1000);
       } else {
-        stopAudioRecording();
+        isRecordingAudio = false;
+        btn.classList.remove('is-recording');
+        btn.innerText = '▶️';
+        statusLbl.innerText = `Recording saved (${document.getElementById('timer-display').innerText}). Ready to submit!`;
+        clearInterval(recordingTimer);
       }
-    }
-
-    function renderLiveWaveform() {
-      if (!isRecordingAudio) return;
-      const canvas = document.getElementById('audio-waveform-canvas');
-      const ctx = canvas.getContext('2d');
-      const bufferLength = analyser.frequencyBinCount;
-      const dataArray = new Uint8Array(bufferLength);
-      analyser.getByteFrequencyData(dataArray);
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const barWidth = (canvas.width / bufferLength) - 2;
-
-      for (let i = 0; i < bufferLength; i++) {
-        const val = dataArray[i];
-        const barHeight = Math.max(6, (val / 255) * canvas.height * 0.85);
-        ctx.fillStyle = '#af893e';
-        ctx.fillRect(i * (barWidth + 2), (canvas.height - barHeight) / 2, barWidth, barHeight);
-      }
-
-      animationFrameId = requestAnimationFrame(renderLiveWaveform);
-    }
-
-    function simulateAudioFallback() {
-      isRecordingAudio = true;
-      const btn = document.getElementById('main-record-btn');
-      btn.classList.add('is-recording');
-      btn.innerText = '⏹️';
-      document.getElementById('record-status-label').innerText = 'Simulating acoustic recording... Tap to finish.';
-
-      secondsElapsed = 0;
-      recordingTimer = setInterval(() => {
-        secondsElapsed++;
-        const m = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-        const s = String(secondsElapsed % 60).padStart(2, '0');
-        document.getElementById('timer-display').innerText = `${m}:${s}`;
-      }, 1000);
-    }
-
-    function stopAudioRecording() {
-      isRecordingAudio = false;
-      const btn = document.getElementById('main-record-btn');
-      btn.classList.remove('is-recording');
-      btn.innerText = '▶️';
-      document.getElementById('record-status-label').innerText = `Recording saved (${document.getElementById('timer-display').innerText}). Review & submit!`;
-
-      clearInterval(recordingTimer);
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
-      drawIdleWaveform();
     }
 
     function submitGuestMemory() {
@@ -1354,25 +1159,7 @@
         alert('Please enter your name.');
         return;
       }
-
       goToGuestStep(5);
-
-      const tbody = document.getElementById('moderation-tbody');
-      const tr = document.createElement('tr');
-      const id = 'row-' + Date.now();
-      tr.id = id;
-      tr.innerHTML = `
-        <td><strong>${name}</strong><br><span style="font-size: 12px; color: var(--text-muted);">${document.getElementById('sub-email').value}</span></td>
-        <td><span class="brand-tag">${document.getElementById('selected-rel-title').innerText}</span></td>
-        <td><em>${document.getElementById('teleprompter-prompt').innerText}</em><br>Microphone audio stream captured via Digital Tribute Studio...</td>
-        <td>🎙️ Voice Only (${document.getElementById('timer-display').innerText || '01:45'})</td>
-        <td>
-          <button class="btn-approve" onclick="approveItem('${id}', '${name}')">Approve</button>
-          <button class="btn-reject" onclick="rejectItem('${id}')">Decline</button>
-        </td>
-      `;
-      tbody.prepend(tr);
-
       const countEl = document.getElementById('pending-count');
       countEl.innerText = parseInt(countEl.innerText) + 1;
     }
@@ -1381,82 +1168,9 @@
       document.getElementById(rowId)?.remove();
       const countEl = document.getElementById('pending-count');
       countEl.innerText = Math.max(0, parseInt(countEl.innerText) - 1);
-      alert(`Tribute from ${name} approved and permanently integrated into the master memorial document and compiled film.`);
+      alert(`Tribute from ${name} approved and permanently integrated into the Coffee Table Volume.`);
     }
 
-    function rejectItem(rowId) {
-      const reason = prompt('Reason for declining this submission (logged for audit):', 'Off-topic memory');
-      if (reason) {
-        document.getElementById(rowId)?.remove();
-        const countEl = document.getElementById('pending-count');
-        countEl.innerText = Math.max(0, parseInt(countEl.innerText) - 1);
-        alert('Tribute declined and logged.');
-      }
-    }
-
-    // Master Memorial Film Player
-    const filmChapters = [
-      {
-        badge: "Chapter 1 of 4 · Spouse & Life Partner",
-        title: "In Loving Memory of Eleanor Vance",
-        subtitle: "March 14, 1948 — November 22, 2025 · St. Luke's Chapel",
-        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80",
-        quote: "“Every morning at 6:15 AM, Eleanor left a handwritten quote on the kitchen island for me and the kids. Over 52 years, that was 19,000 notes of steady devotion...”",
-        speaker: "— Robert Vance (Spouse) · Voice Tribute (2:14)"
-      },
-      {
-        badge: "Chapter 2 of 4 · Daughter's Memory",
-        title: "Joy & Generosity",
-        subtitle: "Story from Claire Vance-Miller",
-        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
-        quote: "“When the town canceled elementary school string classes, Mom organized 8 retired teachers and hosted lessons in our living room for four years...”",
-        speaker: "— Claire Vance-Miller (Daughter) · Video Message (1:45)"
-      },
-      {
-        badge: "Chapter 3 of 4 · Childhood Friend",
-        title: "The Spirit of Adventure",
-        subtitle: "Story from Martha Hayes",
-        avatar: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=400&q=80",
-        quote: "“When our cedar fence raft capsized in Mill Creek mud, Eleanor didn't cry—she burst into uncontrollable laughter and said 'Now we know how to build a better one.' That was who she was.”",
-        speaker: "— Martha Hayes (Childhood Friend) · Voice Tribute (3:02)"
-      },
-      {
-        badge: "Chapter 4 of 4 · Final Tribute & Closing",
-        title: "Forever Cherished in Our Hearts",
-        subtitle: "Compiled by Evergreen Memorial Chapel",
-        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80",
-        quote: "“Her life was a masterclass in quiet grace, generosity without fanfare, and love that spanned generations.”",
-        speaker: "Evergreen Memorial Services · Master Presentation Archival"
-      }
-    ];
-
-    let currentChapterIndex = 0;
-
-    function renderFilmChapter() {
-      const ch = filmChapters[currentChapterIndex];
-      document.getElementById('film-badge').innerText = ch.badge;
-      document.getElementById('film-title').innerText = ch.title;
-      document.getElementById('film-subtitle').innerText = ch.subtitle;
-      document.getElementById('film-avatar').src = ch.avatar;
-      document.getElementById('film-quote').innerText = ch.quote;
-      document.getElementById('film-speaker').innerText = ch.speaker;
-    }
-
-    function nextFilmChapter() {
-      currentChapterIndex = (currentChapterIndex + 1) % filmChapters.length;
-      renderFilmChapter();
-    }
-
-    function prevFilmChapter() {
-      currentChapterIndex = (currentChapterIndex - 1 + filmChapters.length) % filmChapters.length;
-      renderFilmChapter();
-    }
-
-    function toggleFilmPlay() {
-      alert(`Now streaming 1080p Master Presentation Film: ${filmChapters[currentChapterIndex].title}`);
-    }
-
-    // Initialize
     filterCat('friends');
     drawIdleWaveform();
   </script>

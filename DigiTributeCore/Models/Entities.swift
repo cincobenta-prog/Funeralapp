@@ -118,7 +118,7 @@ public enum RelationshipType: String, Codable, CaseIterable, Sendable, Identifia
     public var subtitle: String {
         switch self {
         case .father, .mother, .grandfather, .grandmother: return "Parental & generational bonds"
-        case .spousePartner: return "Life partners & spouses"
+        case .spousePartner: return "Life partners, spouses, soulmates"
         case .son, .daughter: return "Children & posterity"
         case .brother, .sister: return "Siblings & shared roots"
         case .extendedFamily: return "Aunts, uncles, cousins"
@@ -297,11 +297,12 @@ public struct Subject: Identifiable, Codable, Sendable, Hashable {
     }
 }
 
-// MARK: - Topic / Prompt
+// MARK: - Topic / Prompt with Follow-Up Question
 public struct Topic: Identifiable, Codable, Sendable, Equatable, Hashable {
     public let id: UUID
     public let relationshipType: String
     public let questionText: String
+    public let followUpPrompt: String?
     public let sortOrder: Int
     public let active: Bool
     public let pillar: ImpactPillar?
@@ -311,6 +312,7 @@ public struct Topic: Identifiable, Codable, Sendable, Equatable, Hashable {
         id: UUID = UUID(),
         relationshipType: String,
         questionText: String,
+        followUpPrompt: String? = nil,
         sortOrder: Int = 1,
         active: Bool = true,
         pillar: ImpactPillar? = nil,
@@ -319,6 +321,7 @@ public struct Topic: Identifiable, Codable, Sendable, Equatable, Hashable {
         self.id = id
         self.relationshipType = relationshipType
         self.questionText = questionText
+        self.followUpPrompt = followUpPrompt
         self.sortOrder = sortOrder
         self.active = active
         self.pillar = pillar
@@ -329,6 +332,7 @@ public struct Topic: Identifiable, Codable, Sendable, Equatable, Hashable {
         case id
         case relationshipType = "relationship_type"
         case questionText = "question_text"
+        case followUpPrompt = "follow_up_prompt"
         case sortOrder = "sort_order"
         case active
         case pillar

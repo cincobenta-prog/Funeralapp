@@ -3,7 +3,8 @@
 //  DigiTributeCore
 //
 //  Dynamic topic prompt selector for Digital Tribute.
-//  Presents 4 to 6 randomized relationship-specific prompts with emotional impact pillar badges.
+//  Presents 4 to 6 randomized relationship-specific prompts with emotional impact pillar badges
+//  and conversational follow-up reflection questions.
 //
 
 import SwiftUI
@@ -50,7 +51,7 @@ public struct DynamicTopicSelectorView: View {
                 Text(relationship.displayName)
                     .font(.title2.weight(.bold))
 
-                Text("Choose a prompt that lets others understand their impact through joy, pain, sacrifice, or witnessing them in action.")
+                Text("Choose a prompt below. A paired reflection question will unfold to help you share your memory deeply.")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -59,7 +60,7 @@ public struct DynamicTopicSelectorView: View {
 
             // Prompts Scroll List
             ScrollView {
-                VStack(spacing: 12) {
+                VStack(spacing: 14) {
                     ForEach(prompts) { topic in
                         promptCard(for: topic)
                     }
@@ -75,7 +76,7 @@ public struct DynamicTopicSelectorView: View {
                 Button {
                     Task { await loadPrompts() }
                 } label: {
-                    Label("Shuffle for New Prompts", systemImage: "arrow.triangle.2.circlepath")
+                    Label("Shuffle for New Questions", systemImage: "arrow.triangle.2.circlepath")
                         .font(.footnote.weight(.medium))
                         .foregroundColor(Color.accentColor)
                 }
@@ -109,10 +110,12 @@ public struct DynamicTopicSelectorView: View {
         let isSelected = selectedTopic?.id == topic.id
 
         return Button {
-            selectedTopic = topic
-            isFreeform = false
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                selectedTopic = topic
+                isFreeform = false
+            }
         } label: {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 10) {
                 if let pillar = topic.pillar {
                     HStack(spacing: 4) {
                         Image(systemName: pillar.icon)
@@ -128,9 +131,31 @@ public struct DynamicTopicSelectorView: View {
                 }
 
                 Text("“\(topic.questionText)”")
-                    .font(.body)
+                    .font(.body.weight(isSelected ? .semibold : .regular))
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.primary)
+
+                // Conversational Follow-Up Prompt Unfolding
+                if isSelected, let followUp = topic.followUpPrompt {
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.turn.down.right")
+                                .font(.caption2.weight(.bold))
+                            Text("Follow-Up Reflection:")
+                                .font(.caption2.weight(.bold))
+                                .textCase(.uppercase)
+                        }
+                        .foregroundColor(Color.accentColor)
+
+                        Text("“\(followUp)”")
+                            .font(.subheadline.italic())
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.leading)
+                    }
+                    .padding(.top, 6)
+                    .padding(.leading, 8)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                }
             }
             .padding(16)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -145,8 +170,10 @@ public struct DynamicTopicSelectorView: View {
 
     private var freeformCard: some View {
         Button {
-            selectedTopic = nil
-            isFreeform = true
+            withAnimation {
+                selectedTopic = nil
+                isFreeform = true
+            }
         } label: {
             HStack(spacing: 12) {
                 Image(systemName: isFreeform ? "checkmark.circle.fill" : "circle")

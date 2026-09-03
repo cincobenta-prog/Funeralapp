@@ -21,13 +21,14 @@ struct TestRunner {
             }
         }
 
-        // Test 1: All expanded relationship types (20+) have prompts mapped to 4 impact pillars
+        // Test 1: All expanded relationship types (20+) have prompts with paired follow-ups
         let service = QuestionBankService()
         for relationship in RelationshipType.allCases {
             let prompts = await service.getPrompts(for: relationship, count: 5)
+            let hasFollowUps = prompts.allSatisfy { $0.followUpPrompt != nil && !$0.followUpPrompt!.isEmpty }
             assertTest(
-                prompts.count >= 4 && prompts.count <= 6 && !prompts.isEmpty,
-                "Prompts for [\(relationship.category.rawValue)]: \(relationship.displayName) (\(prompts.count) prompts)"
+                prompts.count >= 4 && prompts.count <= 6 && hasFollowUps,
+                "Prompts with follow-ups for [\(relationship.category.rawValue)]: \(relationship.displayName) (\(prompts.count) prompts)"
             )
         }
 
@@ -68,7 +69,7 @@ struct TestRunner {
             assertTest(false, "Subject serialization error: \(error)")
         }
 
-        // Test 4: Tribute Model Serialization
+        // Test 4: Tribute Model Serialization with Voice-Only
         do {
             let tribute = Tribute(
                 id: UUID(),
@@ -99,7 +100,7 @@ struct TestRunner {
             assertTest(false, "Tribute serialization error: \(error)")
         }
 
-        // Test 5: Memorial Document Compilation
+        // Test 5: Coffee Table Memorial Book HTML Compilation
         let docService = MemorialDocumentService()
         let subject = Subject(
             id: UUID(),
@@ -109,7 +110,12 @@ struct TestRunner {
             bioText: "Beloved father, craftsman, and childhood friend.",
             status: .active
         )
-        let sampleTopic = Topic(id: UUID(), relationshipType: "childhood_friend", questionText: "What was an adventure only the two of you knew about?")
+        let sampleTopic = Topic(
+            id: UUID(),
+            relationshipType: "childhood_friend",
+            questionText: "What was an adventure only the two of you knew about?",
+            followUpPrompt: "What was the moment during that adventure where you both laughed until you couldn't breathe?"
+        )
         let approvedTribute = Tribute(
             id: UUID(),
             subjectId: subject.id,
@@ -122,7 +128,7 @@ struct TestRunner {
         let sections = docService.organizeTributesForPresentation(tributes: [approvedTribute], topics: [sampleTopic])
         let html = docService.generateDocumentHTML(subject: subject, sections: sections, funeralHomeName: "Evergreen Memorials")
 
-        assertTest(sections.count == 1 && html.contains("Arthur Pendelton") && html.contains("David Pendelton"), "Unified Memorial Document Generation")
+        assertTest(sections.count == 1 && html.contains("Arthur Pendelton") && html.contains("David Pendelton") && html.contains("Keepsake Memorial Volume"), "Coffee Table Book HTML Compilation")
 
         // Test 6: PDF Booklet Export Generation
         let pdfData = PDFExportService.shared.generatePDFBooklet(
