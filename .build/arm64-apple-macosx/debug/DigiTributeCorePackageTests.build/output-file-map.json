@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCorePackageTests.build/primary.swiftdeps"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCorePackageTests.derived/runner.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCorePackageTests.build/runner.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCorePackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCorePackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCorePackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCorePackageTests.build/runner.dia"
+  }
+}

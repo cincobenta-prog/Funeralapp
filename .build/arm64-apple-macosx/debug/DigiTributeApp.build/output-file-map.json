@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/primary.swiftdeps"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeApp/App.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/App.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/App.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/App~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/App.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/App.dia"
+  }
+}

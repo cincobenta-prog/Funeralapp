@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+venv/
+.env
+
+# Logs and OS files
+*.log
+.DS_Store
+.hermes/

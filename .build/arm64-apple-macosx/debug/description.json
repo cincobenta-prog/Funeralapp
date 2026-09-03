@@ -1,0 +1,806 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.DigiTributeApp-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/sources",
+      "importPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeApp/App.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules/DigiTributeCore.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "DigiTributeApp",
+      "moduleOutputPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules/DigiTributeApp.swiftmodule",
+      "objects" : [
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/App.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j15",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "DigiTributeApp_main",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "my_project"
+      ],
+      "outputFileMapPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/App.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules/DigiTributeApp.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeApp/App.swift"
+      ],
+      "tempsPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.DigiTributeCore-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/sources",
+      "importPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Models/Entities.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/MemorialDocumentService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/PDFExportService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/QuestionBankService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/StorageService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/SupabaseClientService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/AdminDashboardView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MemorialDocumentViewer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "DigiTributeCore",
+      "moduleOutputPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules/DigiTributeCore.swiftmodule",
+      "objects" : [
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.swift.o",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j15",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/include/DigiTributeCore-Swift.h",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "my_project"
+      ],
+      "outputFileMapPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules/DigiTributeCore.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Models/Entities.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/MemorialDocumentService.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/PDFExportService.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/QuestionBankService.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/StorageService.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/SupabaseClientService.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/AdminDashboardView.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MemorialDocumentViewer.swift",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift"
+      ],
+      "tempsPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.DigiTributeTestRunner-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build/sources",
+      "importPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeTestRunner/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules/DigiTributeCore.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "DigiTributeTestRunner",
+      "moduleOutputPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules/DigiTributeTestRunner.swiftmodule",
+      "objects" : [
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j15",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "DigiTributeTestRunner_main",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "my_project"
+      ],
+      "outputFileMapPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules/DigiTributeTestRunner.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeTestRunner/main.swift"
+      ],
+      "tempsPath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "DigiTributeApp" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "DigiTributeApp",
+      "-package-name",
+      "my_project",
+      "-c",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeApp/App.swift",
+      "-I",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j15",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "DigiTributeApp_main",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "my_project",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "DigiTributeCore" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "DigiTributeCore",
+      "-package-name",
+      "my_project",
+      "-c",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Models/Entities.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/MemorialDocumentService.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/PDFExportService.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/QuestionBankService.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/StorageService.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/SupabaseClientService.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/AdminDashboardView.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MemorialDocumentViewer.swift",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift",
+      "-I",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j15",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/include/DigiTributeCore-Swift.h",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "my_project",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "DigiTributeTestRunner" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "DigiTributeTestRunner",
+      "-package-name",
+      "my_project",
+      "-c",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeTestRunner/main.swift",
+      "-I",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j15",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "DigiTributeTestRunner_main",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "my_project",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "DigiTributeApp" : [
+      "DigiTributeCore"
+    ],
+    "DigiTributeCore" : [
+
+    ],
+    "DigiTributeTestRunner" : [
+      "DigiTributeCore"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp-entitlement.plist"
+    },
+    "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeApp/App.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/sources"
+    },
+    "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.build/App.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeApp.product/Objects.LinkFileList"
+    },
+    "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Models/Entities.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/MemorialDocumentService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/PDFExportService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/QuestionBankService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/StorageService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/SupabaseClientService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/AdminDashboardView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MemorialDocumentViewer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/sources"
+    },
+    "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner-entitlement.plist"
+    },
+    "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/Sources/DigiTributeTestRunner/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build/sources"
+    },
+    "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.build/main.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeTestRunner.product/Objects.LinkFileList"
+    },
+    "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}

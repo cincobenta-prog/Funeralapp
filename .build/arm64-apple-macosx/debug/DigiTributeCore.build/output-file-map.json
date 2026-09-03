@@ -1,0 +1,75 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/primary.swiftdeps"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Models/Entities.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/Entities.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/MemorialDocumentService.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentService.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/PDFExportService.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/PDFExportService.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/QuestionBankService.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/QuestionBankService.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/StorageService.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/StorageService.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Services/SupabaseClientService.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/SupabaseClientService.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/AdminDashboardView.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/AdminDashboardView.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/GuestEventInviteView.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/GuestEventInviteView.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/MemorialDocumentViewer.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/MemorialDocumentViewer.dia"
+  },
+  "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/DigiTributeCore/Views/RelationshipPromptPickerView.swift": {
+    "dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.d",
+    "object": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swift.o",
+    "swiftmodule": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView~partial.swiftmodule",
+    "swift-dependencies": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.swiftdeps",
+    "diagnostics": "/Users/jbenta1me.com/.gemini/antigravity-ide/scratch/my-project/.build/arm64-apple-macosx/debug/DigiTributeCore.build/RelationshipPromptPickerView.dia"
+  }
+}
