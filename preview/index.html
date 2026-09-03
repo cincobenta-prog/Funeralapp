@@ -103,7 +103,7 @@
     .nav-tab-btn {
       background: transparent;
       border: none;
-      padding: 9px 20px;
+      padding: 9px 18px;
       border-radius: 20px;
       font-size: 13.5px;
       font-weight: 600;
@@ -182,7 +182,7 @@
       box-shadow: var(--shadow-md);
     }
 
-    /* Atoms-style Stepped Navigation */
+    /* Stepper Header */
     .stepper-header {
       display: flex;
       justify-content: center;
@@ -371,31 +371,14 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
 
-    /* Waveform Animation */
-    .waveform-visualizer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      height: 70px;
-      margin: 20px 0;
-    }
-
-    .wave-bar {
-      width: 5px;
-      background: var(--gold-primary);
-      border-radius: 3px;
-      height: 12px;
-      transition: height 0.15s ease;
-    }
-
-    .recording .wave-bar {
-      animation: wavePulse 0.8s ease-in-out infinite alternate;
-    }
-
-    @keyframes wavePulse {
-      0% { height: 10px; }
-      100% { height: 55px; }
+    /* Canvas Live Waveform */
+    #audio-waveform-canvas {
+      width: 100%;
+      height: 90px;
+      background: #faf7f2;
+      border-radius: 12px;
+      display: block;
+      margin: 16px auto;
     }
 
     /* Record Dial */
@@ -465,6 +448,36 @@
     .btn-secondary:hover {
       background: var(--bg-cream);
       color: var(--text-dark);
+    }
+
+    /* Video Player Canvas */
+    .master-film-player {
+      background: #0f0f11;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      color: white;
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .film-title-card {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      color: #f1dfb5;
+      margin-bottom: 6px;
+    }
+
+    .film-chapter-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     /* Keepsake Memorial Document */
@@ -651,11 +664,14 @@
       <button class="nav-tab-btn active" onclick="showTab('guest')">
         🎙️ Share a Memory (Guest Flow)
       </button>
+      <button class="nav-tab-btn" onclick="showTab('film')">
+        🎬 Master Memorial Film
+      </button>
       <button class="nav-tab-btn" onclick="showTab('document')">
         📖 Keepsake Memorial Book
       </button>
       <button class="nav-tab-btn" onclick="showTab('admin')">
-        🏛️ Funeral Home Admin <span class="badge-count" id="pending-count">2</span>
+        🏛️ Funeral Admin <span class="badge-count" id="pending-count">2</span>
       </button>
       <button class="nav-tab-btn" onclick="showTab('cloud')">
         ⚡ Cloud & Retention
@@ -743,7 +759,7 @@
           </div>
         </div>
 
-        <!-- STEP 4: Recording Studio (Voice Only vs Video & Audio) -->
+        <!-- STEP 4: Recording Studio (Real Audio Waveform + MediaRecorder) -->
         <div id="guest-step-4" style="display: none;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
             <button class="btn-secondary" onclick="goToGuestStep(3)">← Back to Prompts</button>
@@ -761,31 +777,24 @@
             </div>
           </div>
 
-          <!-- Voice Canvas -->
+          <!-- Voice Canvas (Real Waveform Canvas) -->
           <div id="canvas-voice" class="studio-box" style="background: var(--bg-cream); border-radius: var(--radius-lg);">
-            <div class="waveform-visualizer" id="wave-visualizer">
-              <div class="wave-bar" style="height: 14px;"></div>
-              <div class="wave-bar" style="height: 24px;"></div>
-              <div class="wave-bar" style="height: 38px;"></div>
-              <div class="wave-bar" style="height: 18px;"></div>
-              <div class="wave-bar" style="height: 44px;"></div>
-              <div class="wave-bar" style="height: 28px;"></div>
-              <div class="wave-bar" style="height: 52px;"></div>
-              <div class="wave-bar" style="height: 32px;"></div>
-              <div class="wave-bar" style="height: 20px;"></div>
-              <div class="wave-bar" style="height: 48px;"></div>
-              <div class="wave-bar" style="height: 15px;"></div>
-            </div>
+            <canvas id="audio-waveform-canvas" width="600" height="90"></canvas>
 
             <div id="timer-display" style="font-size: 32px; font-weight: 700; font-family: monospace; margin: 10px 0;">00:00</div>
 
             <div class="record-dial-wrap">
-              <button id="main-record-btn" class="record-dial" onclick="toggleRecording()">🎙️</button>
+              <button id="main-record-btn" class="record-dial" onclick="toggleRealAudioRecording()">🎙️</button>
             </div>
 
             <p id="record-status-label" style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">
-              Tap to begin recording your voice
+              Tap to start acoustic voice recording
             </p>
+
+            <!-- Audio Playback Preview -->
+            <div id="playback-preview-box" style="display: none; margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--gold-border);">
+              <audio id="recorded-audio-element" controls style="width: 100%; max-width: 400px; margin: 0 auto;"></audio>
+            </div>
           </div>
 
           <!-- Video Canvas -->
@@ -814,7 +823,7 @@
           <div style="font-size: 56px; color: #38a169; margin-bottom: 12px;">✓</div>
           <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Thank You for Sharing</h3>
           <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
-            Your tribute has been submitted to the funeral administrator. Once approved, it will be added to Eleanor's master presentation keepsake booklet.
+            Your tribute has been submitted to the funeral administrator. Once approved, it will be added to Eleanor's master presentation keepsake booklet and film.
           </p>
           <button class="btn-secondary" onclick="goToGuestStep(2)">Share Another Memory</button>
         </div>
@@ -822,7 +831,41 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- VIEW 2: UNIFIED MEMORIAL DOCUMENT & KEEPSAKE BOOK        -->
+    <!-- VIEW 2: MASTER MEMORIAL PRESENTATION FILM (VIDEO/AUDIO)  -->
+    <!-- ======================================================== -->
+    <section id="view-film" class="panel-view">
+      <div class="hero-banner">
+        <h2>Compiled Master Memorial Film</h2>
+        <p>1080p unified compilation film assembling approved voices, video messages, and photos.</p>
+      </div>
+
+      <div class="master-film-player">
+        <div class="film-chapter-badge" id="film-badge">Chapter 1 of 4 · Opening Tribute</div>
+        <h3 class="film-title-card" id="film-title">In Loving Memory of Eleanor Vance</h3>
+        <p style="color: #d8ceb9; font-size: 14px; margin-bottom: 24px;" id="film-subtitle">
+          March 14, 1948 — November 22, 2025 · St. Luke's Chapel
+        </p>
+
+        <div style="max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.06); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.12);">
+          <img id="film-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" style="width: 140px; height: 140px; border-radius: 50%; border: 3px solid #af893e; object-fit: cover; margin-bottom: 14px;" />
+          <div id="film-quote" style="font-size: 15px; font-style: italic; color: #f5eedf; min-height: 48px;">
+            “Every morning at 6:15 AM, Eleanor left a handwritten quote on the kitchen island for me and the kids...”
+          </div>
+          <div id="film-speaker" style="font-size: 13px; color: #af893e; font-weight: 700; margin-top: 10px;">
+            — Robert Vance (Spouse) · Voice Tribute (2:14)
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 12px; margin-top: 24px;">
+          <button class="btn-secondary" style="color: white; border-color: rgba(255,255,255,0.3);" onclick="prevFilmChapter()">⏮ Previous Tribute</button>
+          <button class="btn-gold" onclick="toggleFilmPlay()">▶ Play Film</button>
+          <button class="btn-secondary" style="color: white; border-color: rgba(255,255,255,0.3);" onclick="nextFilmChapter()">Next Tribute ⏭</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 3: UNIFIED MEMORIAL DOCUMENT & KEEPSAKE BOOK        -->
     <!-- ======================================================== -->
     <section id="view-document" class="panel-view">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
@@ -926,7 +969,7 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- VIEW 3: ADMIN MODERATION                                 -->
+    <!-- VIEW 4: ADMIN MODERATION                                 -->
     <!-- ======================================================== -->
     <section id="view-admin" class="panel-view">
       <div class="hero-banner">
@@ -972,7 +1015,7 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- VIEW 4: CLOUD & ARCHIVAL                                 -->
+    <!-- VIEW 5: CLOUD & ARCHIVAL                                 -->
     <!-- ======================================================== -->
     <section id="view-cloud" class="panel-view">
       <div class="hero-banner">
@@ -998,7 +1041,7 @@
             <div>⏱️ <strong>Schedule:</strong> Daily at 03:00 UTC (via <code>pg_cron</code>)</div>
             <div>🧹 <strong>Retention Procedure:</strong> <code>purge_expired_raw_media()</code></div>
             <div>⚡ <strong>Edge Function:</strong> <code>functions/purge-raw-footage</code></div>
-            <div>🛡️ <strong>Archival Safety:</strong> Master keepsake booklet preserved forever</div>
+            <div>🛡️ <strong>Archival Safety:</strong> Master keepsake booklet & compilation preserved forever</div>
           </div>
         </div>
       </div>
@@ -1081,6 +1124,13 @@
 
     let currentSelectedRel = 'childhood_friend';
     let currentSelectedPrompt = null;
+
+    // Real MediaRecorder & Web Audio State
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let audioContext = null;
+    let analyser = null;
+    let animationFrameId = null;
     let isRecordingAudio = false;
     let recordingTimer = null;
     let secondsElapsed = 0;
@@ -1111,6 +1161,8 @@
         filterCat('friends');
       } else if (stepNum === 3) {
         renderPrompts();
+      } else if (stepNum === 4) {
+        drawIdleWaveform();
       }
     }
 
@@ -1182,32 +1234,118 @@
       document.getElementById('canvas-video').style.display = (mode === 'video') ? 'block' : 'none';
     }
 
-    function toggleRecording() {
+    // Real Web Audio Waveform Canvas
+    function drawIdleWaveform() {
+      const canvas = document.getElementById('audio-waveform-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#e8dcbe';
+      const numBars = 48;
+      const barWidth = canvas.width / numBars - 3;
+      for (let i = 0; i < numBars; i++) {
+        const h = 6 + Math.sin(i * 0.3) * 4;
+        ctx.fillRect(i * (barWidth + 3), (canvas.height - h) / 2, barWidth, h);
+      }
+    }
+
+    async function toggleRealAudioRecording() {
       const btn = document.getElementById('main-record-btn');
-      const wave = document.getElementById('wave-visualizer');
       const statusLbl = document.getElementById('record-status-label');
 
       if (!isRecordingAudio) {
-        isRecordingAudio = true;
-        btn.classList.add('is-recording');
-        btn.innerText = '⏹️';
-        wave.classList.add('recording');
-        statusLbl.innerText = 'Recording live acoustic audio... Tap to stop.';
-        secondsElapsed = 0;
-        recordingTimer = setInterval(() => {
-          secondsElapsed++;
-          const m = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-          const s = String(secondsElapsed % 60).padStart(2, '0');
-          document.getElementById('timer-display').innerText = `${m}:${s}`;
-        }, 1000);
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          const source = audioContext.createMediaStreamSource(stream);
+          analyser = audioContext.createAnalyser();
+          analyser.fftSize = 64;
+          source.connect(analyser);
+
+          audioChunks = [];
+          mediaRecorder = new MediaRecorder(stream);
+          mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+          mediaRecorder.onstop = () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+            const audioUrl = URL.createObjectURL(audioBlob);
+            const audioEl = document.getElementById('recorded-audio-element');
+            audioEl.src = audioUrl;
+            document.getElementById('playback-preview-box').style.display = 'block';
+          };
+
+          mediaRecorder.start();
+          isRecordingAudio = true;
+          btn.classList.add('is-recording');
+          btn.innerText = '⏹️';
+          statusLbl.innerText = 'Recording live audio from your microphone... Tap to finish.';
+
+          // Visualizer loop
+          renderLiveWaveform();
+
+          secondsElapsed = 0;
+          recordingTimer = setInterval(() => {
+            secondsElapsed++;
+            const m = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+            const s = String(secondsElapsed % 60).padStart(2, '0');
+            document.getElementById('timer-display').innerText = `${m}:${s}`;
+          }, 1000);
+        } catch (err) {
+          console.warn('Microphone permission not granted or unavailable, falling back to simulation:', err);
+          simulateAudioFallback();
+        }
       } else {
-        isRecordingAudio = false;
-        btn.classList.remove('is-recording');
-        btn.innerText = '▶️';
-        wave.classList.remove('recording');
-        statusLbl.innerText = `Recording saved (${document.getElementById('timer-display').innerText}). Ready to submit!`;
-        clearInterval(recordingTimer);
+        stopAudioRecording();
       }
+    }
+
+    function renderLiveWaveform() {
+      if (!isRecordingAudio) return;
+      const canvas = document.getElementById('audio-waveform-canvas');
+      const ctx = canvas.getContext('2d');
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      analyser.getByteFrequencyData(dataArray);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const barWidth = (canvas.width / bufferLength) - 2;
+
+      for (let i = 0; i < bufferLength; i++) {
+        const val = dataArray[i];
+        const barHeight = Math.max(6, (val / 255) * canvas.height * 0.85);
+        ctx.fillStyle = '#af893e';
+        ctx.fillRect(i * (barWidth + 2), (canvas.height - barHeight) / 2, barWidth, barHeight);
+      }
+
+      animationFrameId = requestAnimationFrame(renderLiveWaveform);
+    }
+
+    function simulateAudioFallback() {
+      isRecordingAudio = true;
+      const btn = document.getElementById('main-record-btn');
+      btn.classList.add('is-recording');
+      btn.innerText = '⏹️';
+      document.getElementById('record-status-label').innerText = 'Simulating acoustic recording... Tap to finish.';
+
+      secondsElapsed = 0;
+      recordingTimer = setInterval(() => {
+        secondsElapsed++;
+        const m = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+        const s = String(secondsElapsed % 60).padStart(2, '0');
+        document.getElementById('timer-display').innerText = `${m}:${s}`;
+      }, 1000);
+    }
+
+    function stopAudioRecording() {
+      isRecordingAudio = false;
+      const btn = document.getElementById('main-record-btn');
+      btn.classList.remove('is-recording');
+      btn.innerText = '▶️';
+      document.getElementById('record-status-label').innerText = `Recording saved (${document.getElementById('timer-display').innerText}). Review & submit!`;
+
+      clearInterval(recordingTimer);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+      drawIdleWaveform();
     }
 
     function submitGuestMemory() {
@@ -1219,7 +1357,6 @@
 
       goToGuestStep(5);
 
-      // Add to moderation queue
       const tbody = document.getElementById('moderation-tbody');
       const tr = document.createElement('tr');
       const id = 'row-' + Date.now();
@@ -1227,7 +1364,7 @@
       tr.innerHTML = `
         <td><strong>${name}</strong><br><span style="font-size: 12px; color: var(--text-muted);">${document.getElementById('sub-email').value}</span></td>
         <td><span class="brand-tag">${document.getElementById('selected-rel-title').innerText}</span></td>
-        <td><em>${document.getElementById('teleprompter-prompt').innerText}</em><br>Voice tribute captured via Digital Tribute Studio...</td>
+        <td><em>${document.getElementById('teleprompter-prompt').innerText}</em><br>Microphone audio stream captured via Digital Tribute Studio...</td>
         <td>🎙️ Voice Only (${document.getElementById('timer-display').innerText || '01:45'})</td>
         <td>
           <button class="btn-approve" onclick="approveItem('${id}', '${name}')">Approve</button>
@@ -1244,7 +1381,7 @@
       document.getElementById(rowId)?.remove();
       const countEl = document.getElementById('pending-count');
       countEl.innerText = Math.max(0, parseInt(countEl.innerText) - 1);
-      alert(`Tribute from ${name} approved and permanently integrated into the master memorial document.`);
+      alert(`Tribute from ${name} approved and permanently integrated into the master memorial document and compiled film.`);
     }
 
     function rejectItem(rowId) {
@@ -1257,8 +1394,71 @@
       }
     }
 
+    // Master Memorial Film Player
+    const filmChapters = [
+      {
+        badge: "Chapter 1 of 4 · Spouse & Life Partner",
+        title: "In Loving Memory of Eleanor Vance",
+        subtitle: "March 14, 1948 — November 22, 2025 · St. Luke's Chapel",
+        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80",
+        quote: "“Every morning at 6:15 AM, Eleanor left a handwritten quote on the kitchen island for me and the kids. Over 52 years, that was 19,000 notes of steady devotion...”",
+        speaker: "— Robert Vance (Spouse) · Voice Tribute (2:14)"
+      },
+      {
+        badge: "Chapter 2 of 4 · Daughter's Memory",
+        title: "Joy & Generosity",
+        subtitle: "Story from Claire Vance-Miller",
+        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+        quote: "“When the town canceled elementary school string classes, Mom organized 8 retired teachers and hosted lessons in our living room for four years...”",
+        speaker: "— Claire Vance-Miller (Daughter) · Video Message (1:45)"
+      },
+      {
+        badge: "Chapter 3 of 4 · Childhood Friend",
+        title: "The Spirit of Adventure",
+        subtitle: "Story from Martha Hayes",
+        avatar: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=400&q=80",
+        quote: "“When our cedar fence raft capsized in Mill Creek mud, Eleanor didn't cry—she burst into uncontrollable laughter and said 'Now we know how to build a better one.' That was who she was.”",
+        speaker: "— Martha Hayes (Childhood Friend) · Voice Tribute (3:02)"
+      },
+      {
+        badge: "Chapter 4 of 4 · Final Tribute & Closing",
+        title: "Forever Cherished in Our Hearts",
+        subtitle: "Compiled by Evergreen Memorial Chapel",
+        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80",
+        quote: "“Her life was a masterclass in quiet grace, generosity without fanfare, and love that spanned generations.”",
+        speaker: "Evergreen Memorial Services · Master Presentation Archival"
+      }
+    ];
+
+    let currentChapterIndex = 0;
+
+    function renderFilmChapter() {
+      const ch = filmChapters[currentChapterIndex];
+      document.getElementById('film-badge').innerText = ch.badge;
+      document.getElementById('film-title').innerText = ch.title;
+      document.getElementById('film-subtitle').innerText = ch.subtitle;
+      document.getElementById('film-avatar').src = ch.avatar;
+      document.getElementById('film-quote').innerText = ch.quote;
+      document.getElementById('film-speaker').innerText = ch.speaker;
+    }
+
+    function nextFilmChapter() {
+      currentChapterIndex = (currentChapterIndex + 1) % filmChapters.length;
+      renderFilmChapter();
+    }
+
+    function prevFilmChapter() {
+      currentChapterIndex = (currentChapterIndex - 1 + filmChapters.length) % filmChapters.length;
+      renderFilmChapter();
+    }
+
+    function toggleFilmPlay() {
+      alert(`Now streaming 1080p Master Presentation Film: ${filmChapters[currentChapterIndex].title}`);
+    }
+
     // Initialize
     filterCat('friends');
+    drawIdleWaveform();
   </script>
 </body>
 </html>

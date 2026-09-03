@@ -1,0 +1,47 @@
+{
+  "title": "In Loving Memory of Eleanor Vance",
+  "dates": "March 14, 1948 \u2014 November 22, 2025",
+  "compiled_at": "2026-09-03T22:52:43.503441",
+  "chapters": [
+    {
+      "type": "intro_card",
+      "duration_seconds": 6,
+      "title": "In Loving Memory of Eleanor Vance",
+      "dates": "March 14, 1948 \u2014 November 22, 2025",
+      "photo_url": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"
+    },
+    {
+      "type": "tribute_item",
+      "contributor_name": "Robert Vance",
+      "relationship": "spouse_partner",
+      "media_type": "audio",
+      "media_url": "https://storage.supabase.co/raw/robert_audio.m4a",
+      "prompt": "What's something she did every day that was a quiet act of devotion?",
+      "pillar": "Help & Sacrifice"
+    },
+    {
+      "type": "tribute_item",
+      "contributor_name": "Claire Vance-Miller",
+      "relationship": "daughter",
+      "media_type": "video",
+      "media_url": "https://storage.supabase.co/raw/claire_video.mp4",
+      "prompt": "What's a moment she made you proud in a way that took your breath away?",
+      "pillar": "Joy & Laughter"
+    },
+    {
+      "type": "tribute_item",
+      "contributor_name": "Martha Hayes",
+      "relationship": "childhood_friend",
+      "media_type": "audio",
+      "media_url": "https://storage.supabase.co/raw/martha_audio.m4a",
+      "prompt": "What was an adventure only the two of you knew about?",
+      "pillar": "Witnessing in Action"
+    },
+    {
+      "type": "outro_card",
+      "duration_seconds": 5,
+      "text": "Forever Cherished in Our Hearts",
+      "funeral_home": "Evergreen Memorial Chapel"
+    }
+  ]
+}
